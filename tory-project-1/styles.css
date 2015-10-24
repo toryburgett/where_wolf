@@ -1,0 +1,116 @@
+*
+{
+    font-family: 'Open Sans', sans-serif;
+}
+body
+{
+    background: #454545;
+}
+
+.wrapper
+{
+    width: 500px;
+    margin: 50px auto;
+    padding: 50px 0 50px 0;
+
+    background-color: white;
+}
+
+.questionArea
+{
+    width: 300px;
+    padding: 5px;
+    margin: 5px auto;
+    text-align: center;
+    background: plum;
+}
+
+.question{
+    width: 250px;
+    margin: 0 auto;
+    /*padding: 0px;*/
+    background: rgba(200,30,200,.5);
+}
+
+.questionStart{
+    width: 250px;
+    margin: 0 auto;
+    padding: 20px;
+    /*padding: 0px;*/
+    background: rgba(200,30,200,.5);
+}
+.answerArea
+{
+    width: 300px;
+    /*height: 150px;*/
+    /*padding: 5px;*/
+    margin: 5px auto;
+    text-align: center;
+    background: powderBlue;
+}
+
+
+.answerChoice
+{
+    font-family: 'Open Sans', sans-serif;
+    /*font-size: 65px;*/
+
+    float: left;
+
+    width: 140px;
+    height: 70px;
+    /*padding: 2px;*/
+    margin: 2px;
+
+    background: lemonchiffon;
+
+    color: #4d4d4d;
+    border: 3px solid white;
+}
+
+.answerChoice:hover{
+
+}
+
+.answerChoice p{
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.submitArea{
+    clear: both;
+
+    width: 300px;
+    margin: 5px auto;
+    padding: 5px;
+    text-align: center;
+    background: salmon;
+}
+
+.submitButton
+{
+    clear: both;
+
+    margin: 0 auto;
+    text-align: center;
+
+    padding: 7px 10px;
+
+    color: white;
+    border: 0;
+    background: #454545;
+}
+
+h1
+{
+    margin: 0 auto;
+    padding: 10px 30px 10px 10px;
+
+    text-align: center;
+}
+
+h2
+{
+    font-size: 14px;
+}
