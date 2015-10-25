@@ -69,26 +69,53 @@ body
 }
 
 .answerChoice:hover{
-
+    border: 3px solid pink;
 }
-
+.answerChoice:active{
+    background: orange;
+}
 .answerChoice p{
-    display: inline-block;
-    vertical-align: middle;
-
+    /*display: inline-block;
+    vertical-align: middle;*/
+    padding: 10px 0px;
 }
+
 
 .submitArea{
     clear: both;
 
     width: 300px;
     margin: 5px auto;
-    padding: 5px;
+    padding: 10px 5px;
     text-align: center;
     background: salmon;
 }
 
 .submitButton
+{
+    clear: both;
+
+    margin: 0 auto;
+    text-align: center;
+
+    padding: 7px 10px;
+
+    color: white;
+    border: 0;
+    background: #454545;
+}
+
+.refreshArea{
+    clear: both;
+
+    width: 300px;
+    margin: 5px auto;
+    padding: 5px;
+    text-align: center;
+    background: orange;
+}
+
+.refreshButton
 {
     clear: both;
 
