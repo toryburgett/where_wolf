@@ -14,6 +14,8 @@ $(document).ready(function(){
   //What should the color be for selected items vs items not selected
   var selectedColor = "rgb(255, 165, 0)";
   var unselectedColor = "rgb(255, 250, 205)";
+  var rightAnswerColor = "green";
+  var wrongAnswerColor = "red";
 
   // only one choice is selected
   $(".answerChoice").on("click", function(){
@@ -24,123 +26,82 @@ $(document).ready(function(){
   });
 
   //When on the right question, check answer pulls up the right answerType and verifies that the correct answer has the right background-color color when submit is clicked
-var checkAnswer = function(questionNumber, answerType, correctAnswer){
+  var checkAnswer = function(questionNumber, answerType, correctAnswer){
+    if(questionCounter===questionNumber){
+      //Buttons - hide next show submit
+      $(".nextButton").hide();
+      $(".submitButton").show();
 
-if(questionCounter===1){
-    //Answers - hide, then show relevant answer answer
-    // $(".answerArea").show();
-    $("#multipleChoice").hide();
-    $("#itsTrueFalse").show();
-
-    //Buttons - hide next show submit
-    $(".nextButton").hide();
-    $(".submitButton").show();
-
-    //set correct answer
-    correctAnswer = "#true";
-
-
-    //add event listener for submit
-    $(".submitButton").on("click", function(){
-      event.preventDefault();
-      //what is the correctAnswer's background-color color?
-      var correctAnswerColor;
-      correctAnswerColor = $(correctAnswer).css("background-color");
-
-      if(correctAnswerColor === selectedColor){
-        answerCounter++;
-        console.log("First if worked "+answerCounter);
+      //Answers - hide, then show relevant answer answer
+      if(answerType==="#itsTrueFalse"){
+        $("#multipleChoice").hide();
+        $("#itsTrueFalse").show();
       }
-      else if(correctAnswerColor === unselectedColor){
-        console.log("Wrong "+ answerCounter);
+      else if(answerType==="#multipleChoice"){
+        $("#itsTrueFalse").hide();
+        $("#multipleChoice").show();
       }
-      //Buttons
-      $(".nextButton").show();
-      $(".submitButton").hide();
-    });
-  }
-};
 
+      //add event listener for submit
+      $(".submitButton").on("click", function(){
+        event.preventDefault();
+        //what is the correctAnswer's background-color color?
+        var correctAnswerColor;
+        correctAnswerColor = $(correctAnswer).css("background-color");
 
+        //highlight right answerchange the color to make this color rightAnswerColor
+        $(correctAnswer).css("background-color", rightAnswerColor);
 
+        //does the correctAnswer have the right background-color?
+        if(correctAnswerColor === selectedColor){
+          answerCounter++;
+          console.log("Question "+questionCounter+" right. AnswerCounter: "+answerCounter);
+        }
+        else if(correctAnswerColor === unselectedColor){
+          //make selected answer show up as wrong
+          if ( (correctAnswer!="#true") && ($("#true").css("background-color") === selectedColor)){
+            $("#true").css("background-color", wrongAnswerColor);
+          }
+          else if ( (correctAnswer!="#false") && ($("#false").css("background-color") === selectedColor)){
+            $("#false").css("background-color", wrongAnswerColor);
+          }
+          else if ( (correctAnswer!="#mcA") && ($("#mcA").css("background-color") === selectedColor)){
+            $("#mcA").css("background-color", wrongAnswerColor);
+          }
+          else if ( (correctAnswer!="#mcB") && ($("#mcB").css("background-color") === selectedColor)){
+            $("#mcB").css("background-color", wrongAnswerColor);
+          }
+          else if ( (correctAnswer!="#mcC") && ($("#mcC").css("background-color") === selectedColor)){
+            $("#mcC").css("background-color", wrongAnswerColor);
+          }
+          else if ( (correctAnswer!="#mcD") && ($("#mcD").css("background-color") === selectedColor)){
+            $("#mcD").css("background-color", wrongAnswerColor);
+          }
 
+          console.log("Question "+questionCounter+" wrong. AnswerCounter: "+answerCounter);
+        }
+        $(".nextButton").show();
+        $(".submitButton").hide();
 
-  // var checkAnswer = function(questionNumber, answerType, correctAnswer){
-  //   if (questionCounter===questionNumber){
-  //     $(".answerArea").hide();
-  //     $(answerType).show();
-  //     $(".submitButton").show();
-  //
-  //     $(".submitButton").on("click", function(){
-  //       event.preventDefault();
-  //       if ($(correctAnswer).css("background-color", selectedColor)){
-  //         answerCounter++;
-  //       }
-  //       else{
-  //         console.log("wrong answer");
-  //       }
-  //       // else if (($(correctAnswer).css("background-color")!=selectedColor)&&()) {
-  //       //
-  //       // }
-  //
-  //       $(".nextArea").show();
-  //     });
-  //     // $(".submitArea").hide();
-  //
-  //   }
-  // };
-
-var correctAnswer;
-
+        //Do not continue to track this...
+        $(".submitButton").off("click");
+      });
+    }
+  };
 
   $(".nextButton").on("click", function(){
     event.preventDefault();
     $(".nextButton").text("NEXT");
-    console.log("first ask"+questionCounter);
     if (questionCounter < (numOfQuestions+1)){
-      console.log("questionCounter "+questionCounter);
-
+      //show the correct question
       $("#question"+(questionCounter-1)).hide();
       $("#question"+questionCounter).show();
 
+      //return default colors to answer choice
+      $(".answerChoice").css("background-color", unselectedColor);
+
       //get into what answers to show, and how to grade the answers
       //temp guide: answer to first=true, second=B, third=false.
-
-      // if(questionCounter===1){
-      //   //Answers - hide, then show relevant answer answer
-      //   // $(".answerArea").show();
-      //   $("#multipleChoice").hide();
-      //   $("#itsTrueFalse").show();
-      //
-      //   //Buttons - hide next show submit
-      //   $(".nextButton").hide();
-      //   $(".submitButton").show();
-      //
-      //   //set correct answer
-      //   correctAnswer = "#true";
-      //
-      //   //add event listener for submit
-      //   $(".submitButton").on("click", function(){
-      //     event.preventDefault();
-      //     //what is the correctAnswer's background-color color?
-      //     var correctAnswerColor;
-      //     correctAnswerColor = $(correctAnswer).css("background-color");
-      //
-      //     if(correctAnswerColor === selectedColor){
-      //       answerCounter++;
-      //       console.log("First if worked "+answerCounter);
-      //     }
-      //     else if(correctAnswerColor === unselectedColor){
-      //       console.log("Wrong "+ answerCounter);
-      //     }
-      //     //Buttons
-      //     $(".nextButton").show();
-      //     $(".submitButton").hide();
-      //   });
-      // }
-
-
-
       checkAnswer(1, "#itsTrueFalse", "#true");
       checkAnswer(2, "#multipleChoice", "#mcB");
       checkAnswer(3, "#itsTrueFalse", "#false");
@@ -161,6 +122,5 @@ var correctAnswer;
       $(".questionStart").text("Thank you for playing. You answered "+answerCounter+" out of "+(questionCounter-1)+" questions correctly.");
     }
     questionCounter++;
-    console.log("After Adding "+questionCounter);
   });
 });
