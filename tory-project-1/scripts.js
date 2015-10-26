@@ -5,17 +5,22 @@ $(document).ready(function(){
   $(".answerArea").hide();
   $(".refreshButton").hide();
   $(".submitButton").hide();
+  $(".hallOfGlory").hide();
 
-  //Counts what question you are currently on, How many questions did you get right, how many questions have I made?
+  //Counts what question you are currently on, How many questions did you get right, how many questions have I made?, how many times have you played? What is the highest score?
   var questionCounter = 1;
   var answerCounter = 0;
   var numOfQuestions = 3;
+  var numTimesPlayed = 0;
+  var highScore = 0;
 
   //What should the color be for selected items vs items not selected
   var selectedColor = "rgb(255, 165, 0)";
   var unselectedColor = "rgb(255, 250, 205)";
-  var rightAnswerColor = "green";
-  var wrongAnswerColor = "red";
+  var rightAnswerColor = "palegreen";
+  var wrongAnswerColor = "pink";
+  var highScoreColor = "rgb(0, 255, 0)";
+  var otherScoreColor = "rgb(255,255,255)";
 
   // only one choice is selected
   $(".answerChoice").on("click", function(){
@@ -77,18 +82,57 @@ $(document).ready(function(){
           else if ( (correctAnswer!="#mcD") && ($("#mcD").css("background-color") === selectedColor)){
             $("#mcD").css("background-color", wrongAnswerColor);
           }
-
           console.log("Question "+questionCounter+" wrong. AnswerCounter: "+answerCounter);
         }
         $(".nextButton").show();
         $(".submitButton").hide();
 
-        //Do not continue to track this...
+        //Do not continue to track this event click...
         $(".submitButton").off("click");
       });
     }
   };
 
+// // What happens when you click on the refreshButton
+// // For now, it just brings you back to the the First Question
+// $(".refreshButton").on("click", function(){
+//     event.preventDefault();
+//     //Add one to numTimesPlayed
+//     numTimesPlayed++;
+//     //Buttons
+//     $(".nextButton").show();
+//     $(".nextButton").text("START");
+//     $(".refreshButton").hide();
+//     //Questions
+//     $("#question0").show();
+//     $("#question0").text("Hello! Would you like to play a game?");
+//     //Create Hall of Glory
+//     $(".hallOfGlory").show();
+//     var turnScore = ((answerCounter/numOfQuestions)*100).toFixed(2);
+//     if (((turnScore > highScore)&&(highScore===0))||(turnScore===highScore)){
+//       $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span>HIGH SCORE</span></p>");
+//       highScore = turnScore;
+//     }
+//     else if ((turnScore > highScore)&&(highScore !== 0)){
+//       $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
+//       $(".turnsOfGlory").css("background-color", otherScoreColor);
+//
+//       $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span> -- HIGH SCORE</span></p>");
+//       highScore = turnScore;
+//     }
+//     else {
+//       $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"</p>");
+//     }
+//     //Variables
+//     questionCounter = 1;
+//     answerCounter = 0;
+//     //Do not continue to track this event click...
+//     $(".refreshButton").off("click");
+//   });
+
+
+  //This is the meat of the script file
+  //Brings the user to the right question
   $(".nextButton").on("click", function(){
     event.preventDefault();
     $(".nextButton").text("NEXT");
@@ -120,6 +164,58 @@ $(document).ready(function(){
       $("#question"+(questionCounter-1)).hide();
       $(".questionStart").show();
       $(".questionStart").text("Thank you for playing. You answered "+answerCounter+" out of "+(questionCounter-1)+" questions correctly.");
+
+      // What happens when you click on the refreshButton
+      // For now, it just brings you back to the the First Question
+      $(".refreshButton").on("click", function(){
+          event.preventDefault();
+          //Add one to numTimesPlayed
+          numTimesPlayed++;
+          //Buttons
+          $(".nextButton").show();
+          $(".nextButton").text("START");
+          $(".refreshButton").hide();
+          //Questions
+          $("#question0").show();
+          $("#question0").text("Hello! Would you like to play a game?");
+          //Create Hall of Glory
+          $(".hallOfGlory").show();
+          var turnScore = ((answerCounter/numOfQuestions)*100).toFixed(2);
+          if (((turnScore > highScore)&&(highScore===0))||(turnScore===highScore)){
+            $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span> -- HIGH SCORE</span></p>");
+            highScore = turnScore;
+            console.log("turnScore"+turnScore);
+            console.log("highScore"+highScore);
+          }
+          else if(turnScore === "100.00"){
+            $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
+            $(".turnsOfGlory").css("background-color", otherScoreColor);
+
+            $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span> -- Perfect Score! </span></p>");
+            highScore = 100;
+            console.log("turnScore"+turnScore);
+            console.log("highScore"+highScore);
+          }
+          else if ((turnScore > highScore)){
+            $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
+            $(".turnsOfGlory").css("background-color", otherScoreColor);
+
+            $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span> -- HIGH SCORE</span></p>");
+            highScore = turnScore;
+            console.log("turnScore"+turnScore);
+            console.log("highScore"+highScore);
+          }
+          else {
+            $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"</p>");
+            console.log("turnScore"+turnScore);
+            console.log("highScore"+highScore);
+          }
+          //Variables
+          questionCounter = 1;
+          answerCounter = 0;
+          //Do not continue to track this event click...
+          $(".refreshButton").off("click");
+        });
     }
     questionCounter++;
   });
