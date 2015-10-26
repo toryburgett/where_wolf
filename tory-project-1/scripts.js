@@ -5,7 +5,7 @@ $(document).ready(function(){
   $(".answerArea").hide();
   $(".refreshButton").hide();
   $(".submitButton").hide();
-  $(".hallOfGlory").hide();
+  $(".gloryArea").hide();
 
   //Counts what question you are currently on, How many questions did you get right, how many questions have I made?, how many times have you played? What is the highest score?
   var questionCounter = 1;
@@ -36,7 +36,6 @@ $(document).ready(function(){
       //Buttons - hide next show submit
       $(".nextButton").hide();
       $(".submitButton").show();
-
       //Answers - hide, then show relevant answer answer
       if(answerType==="#itsTrueFalse"){
         $("#multipleChoice").hide();
@@ -46,17 +45,14 @@ $(document).ready(function(){
         $("#itsTrueFalse").hide();
         $("#multipleChoice").show();
       }
-
       //add event listener for submit
       $(".submitButton").on("click", function(){
         event.preventDefault();
         //what is the correctAnswer's background-color color?
         var correctAnswerColor;
         correctAnswerColor = $(correctAnswer).css("background-color");
-
         //highlight right answerchange the color to make this color rightAnswerColor
         $(correctAnswer).css("background-color", rightAnswerColor);
-
         //does the correctAnswer have the right background-color?
         if(correctAnswerColor === selectedColor){
           answerCounter++;
@@ -86,111 +82,28 @@ $(document).ready(function(){
         }
         $(".nextButton").show();
         $(".submitButton").hide();
-
         //Do not continue to track this event click...
         $(".submitButton").off("click");
       });
     }
   };
 
-  // // What happens when you click on the refreshButton
-  // // For now, it just brings you back to the the First Question
-  // $(".refreshButton").on("click", function(){
-  //     event.preventDefault();
-  //     //Add one to numTimesPlayed
-  //     numTimesPlayed++;
-  //     //Buttons
-  //     $(".nextButton").show();
-  //     $(".nextButton").text("START");
-  //     $(".refreshButton").hide();
-  //     //Questions
-  //     $("#question0").show();
-  //     $("#question0").text("Hello! Would you like to play a game?");
-  //     //Create Hall of Glory
-  //     $(".hallOfGlory").show();
-  //     var turnScore = ((answerCounter/numOfQuestions)*100).toFixed(2);
-  //     if (((turnScore > highScore)&&(highScore===0))||(turnScore===highScore)){
-  //       $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span>HIGH SCORE</span></p>");
-  //       highScore = turnScore;
-  //     }
-  //     else if ((turnScore > highScore)&&(highScore !== 0)){
-  //       $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
-  //       $(".turnsOfGlory").css("background-color", otherScoreColor);
-  //
-  //       $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span> -- HIGH SCORE</span></p>");
-  //       highScore = turnScore;
-  //     }
-  //     else {
-  //       $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"</p>");
-  //     }
-  //     //Variables
-  //     questionCounter = 1;
-  //     answerCounter = 0;
-  //     //Do not continue to track this event click...
-  //     $(".refreshButton").off("click");
-  //   });
-
-  //Create Hall of Glory, a scorekeeping measure
-  // var createHallOfGlory = function(){
-  //   $(".hallOfGlory").show();
-  //   var turnScore = ((answerCounter/numOfQuestions)*100);
-  //
-  //   // if (turnScore === "100.00"){
-  //   //   turnScore = 100;
-  //   // }
-  //
-  //   if (((turnScore > highScore)&&(highScore===0))||(turnScore===highScore)||(highScore === 100)){
-  //     if ((highScore===100)&&(turnScore===100)){
-  //       $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span> -- Perfect Score! </span></p>");
-  //     }
-  //     else if ((turnScore !== "100.00")){
-  //     $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span> -- Perfect Score!</span></p>");
-  //     highScore = turnScore;
-  //     console.log("turnScore"+turnScore);
-  //     console.log("highScore"+highScore);
-  //     // }
-  //   }
-  //   else if(turnScore === "100.00"){
-  //     $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
-  //     $(".turnsOfGlory").css("background-color", otherScoreColor);
-  //
-  //     $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span> -- Perfect Score! </span></p>");
-  //     highScore = 100;
-  //     console.log("turnScore"+turnScore);
-  //     console.log("highScore"+highScore);
-  //   }
-  //   else if ((turnScore > highScore)){
-  //     $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
-  //     $(".turnsOfGlory").css("background-color", otherScoreColor);
-  //
-  //     $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"<span> -- HIGH SCORE</span></p>");
-  //     highScore = turnScore;
-  //     console.log("turnScore"+turnScore);
-  //     console.log("highScore"+highScore);
-  //   }
-  //   else {
-  //     $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore+"</p>");
-  //     console.log("turnScore"+turnScore);
-  //     console.log("highScore"+highScore);
-  //   }
-  // };
-
+  // Creates the Hall of Glory, a kind of scoreboard
   var createHallOfGlory = function(){
-    $(".hallOfGlory").show();
+    $(".gloryArea").show();
     var turnScore = ((answerCounter/numOfQuestions)*100);
-
     if(turnScore === 100){
       if (highScore !== 100){
         $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
         $(".turnsOfGlory").css("background-color", otherScoreColor);
       }
-      $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- Perfect Score! </span></p>");
+      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- Perfect Score! </span></p>");
       highScore = turnScore;
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
     }
     else if (((turnScore > highScore)&&(highScore===0))||(turnScore===highScore)){
-      $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
+      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
       highScore = turnScore;
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
@@ -199,7 +112,7 @@ $(document).ready(function(){
       $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
       $(".turnsOfGlory").css("background-color", otherScoreColor);
 
-      $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
+      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
       highScore = turnScore;
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
@@ -211,9 +124,6 @@ $(document).ready(function(){
     }
   };
 
-
-
-
   //This is the meat of the script file
   //Brings the user to the right question
   $(".nextButton").on("click", function(){
@@ -223,37 +133,29 @@ $(document).ready(function(){
       //show the correct question
       $("#question"+(questionCounter-1)).hide();
       $("#question"+questionCounter).show();
-
       //return default colors to answer choice
       $(".answerChoice").css("background-color", unselectedColor);
-
       //get into what answers to show, and how to grade the answers
       //temp guide: answer to first=true, second=B, third=false.
       checkAnswer(1, "#itsTrueFalse", "#true");
       checkAnswer(2, "#multipleChoice", "#mcB");
       checkAnswer(3, "#itsTrueFalse", "#false");
-
     }
     else if (questionCounter === (numOfQuestions+1)){
       //Answers
       $(".answerArea").hide();
-
       //Buttons
       $(".nextButton").hide();
       $(".submitButton").hide();
       $(".refreshButton").show();
-
       //Questions
       $("#question"+(questionCounter-1)).hide();
       $(".questionStart").show();
       $(".questionStart").text("Thank you for playing. You answered "+answerCounter+" out of "+(questionCounter-1)+" questions correctly.");
-
       //Add one to numTimesPlayed
       numTimesPlayed++;
-
       //Create Hall of Glory
       createHallOfGlory();
-
       // What happens when you click on the refreshButton
       // For now, it just brings you back to the the First Question
       $(".refreshButton").on("click", function(){
