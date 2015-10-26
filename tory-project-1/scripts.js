@@ -1,4 +1,18 @@
 $(document).ready(function(){
+
+  //Quiz questions
+  var question1 = {question: "What year is it?", thetrue: "2015", thefalse: "2095, YOURS TRULY"};
+  var question2 = {question: "What is right?", mcA: "not me", mcB: "it's me", mcC: "read these", mcD: "I give up"};
+  var question3 = {question: "Mmmmm watcha say? That it's \"all for the best\"?", thetrue: "Is that a song?", thefalse: "Of course it is"};
+  var question4 = {question: "True False, the answer is true", thetrue: "True", thefalse: "False"};
+  var question5 = {question: "MC Choice, answer is A", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice"};
+  var question6 = {question: "True False, the answer is true", thetrue: "True", thefalse: "False"};
+  var question7 = {question: "True False, the answer is true", thetrue: "True", thefalse: "False"};
+  var question8 = {question: "MC Choice, answer is C", mcA: "A -- Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice"};
+  var question9 = {question: "True False, the answer is false", thetrue: "True", thefalse: "False"};
+  var question10 = {question: "True False, the answer is false", thetrue: "True", thefalse: "False"};
+  var theQuiz = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
+
   //Hides the questions from the page loading
   $(".question").hide();
   $("#question0").show();
@@ -10,7 +24,7 @@ $(document).ready(function(){
   //Counts what question you are currently on, How many questions did you get right, how many questions have I made?, how many times have you played? What is the highest score?
   var questionCounter = 1;
   var answerCounter = 0;
-  var numOfQuestions = 3;
+  var numOfQuestions = 10;
   var numTimesPlayed = 0;
   var highScore = 0;
 
@@ -21,6 +35,15 @@ $(document).ready(function(){
   var wrongAnswerColor = "pink";
   var highScoreColor = "rgb(0, 255, 0)";
   var otherScoreColor = "rgb(255,255,255)";
+
+  for(i=0; i<numOfQuestions; i++){
+    if(i===0){
+      $(".questionArea").append("<div class=\"questionStart\" id=\"question"+(i)+"\">Hello! Would you like to play a game?</div>");
+    }
+    else{
+      $(".questionArea").append("<div class=\"question\" id=\"question"+(i)+"\"></div>");
+    }
+  }
 
   // only one choice is selected
   $(".answerChoice").on("click", function(){
@@ -40,10 +63,18 @@ $(document).ready(function(){
       if(answerType==="#itsTrueFalse"){
         $("#multipleChoice").hide();
         $("#itsTrueFalse").show();
+        $("#question"+questionNumber).html("<p>"+theQuiz[questionNumber-1].question+"</p>");
+        $("#true").html("<p>"+theQuiz[questionNumber-1].thetrue+"</p>");
+        $("#false").html("<p>"+theQuiz[questionNumber-1].thefalse+"</p>");
       }
       else if(answerType==="#multipleChoice"){
         $("#itsTrueFalse").hide();
         $("#multipleChoice").show();
+        $("#question"+questionNumber).html("<p>"+theQuiz[questionNumber-1].question+"</p>");
+        $("#mcA").html("<p>"+theQuiz[questionNumber-1].mcA+"</p>");
+        $("#mcB").html("<p>"+theQuiz[questionNumber-1].mcB+"</p>");
+        $("#mcC").html("<p>"+theQuiz[questionNumber-1].mcC+"</p>");
+        $("#mcD").html("<p>"+theQuiz[questionNumber-1].mcD+"</p>");
       }
       //add event listener for submit
       $(".submitButton").on("click", function(){
@@ -136,10 +167,16 @@ $(document).ready(function(){
       //return default colors to answer choice
       $(".answerChoice").css("background-color", unselectedColor);
       //get into what answers to show, and how to grade the answers
-      //temp guide: answer to first=true, second=B, third=false.
       checkAnswer(1, "#itsTrueFalse", "#true");
       checkAnswer(2, "#multipleChoice", "#mcB");
       checkAnswer(3, "#itsTrueFalse", "#false");
+      checkAnswer(4, "#itsTrueFalse", "#true");
+      checkAnswer(5, "#multipleChoice", "#mcA");
+      checkAnswer(6, "#itsTrueFalse", "#true");
+      checkAnswer(7, "#itsTrueFalse", "#true");
+      checkAnswer(8, "#multipleChoice", "#mcC");
+      checkAnswer(9, "#itsTrueFalse", "#false");
+      checkAnswer(10, "#itsTrueFalse", "#false");
     }
     else if (questionCounter === (numOfQuestions+1)){
       //Answers
@@ -156,8 +193,7 @@ $(document).ready(function(){
       numTimesPlayed++;
       //Create Hall of Glory
       createHallOfGlory();
-      // What happens when you click on the refreshButton
-      // For now, it just brings you back to the the First Question
+      // Whhen you click on the refreshButton brings you to front page of quiz
       $(".refreshButton").on("click", function(){
         event.preventDefault();
         //Buttons
