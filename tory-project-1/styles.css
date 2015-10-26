@@ -84,14 +84,14 @@ body
     padding: 10px 0px;
 }
 
-.nextArea{
+.buttonArea{
     clear: both;
 
     width: 300px;
     margin: 5px auto;
     padding: 10px 5px;
     text-align: center;
-    background: lime;
+    background: #454545;
 }
 
 .nextButton
@@ -105,17 +105,6 @@ body
 
     color: white;
     border: 0;
-    background: #454545;
-}
-
-
-.submitArea{
-    clear: both;
-
-    width: 300px;
-    margin: 5px auto;
-    padding: 10px 5px;
-    text-align: center;
     background: salmon;
 }
 
@@ -130,17 +119,7 @@ body
 
     color: white;
     border: 0;
-    background: #454545;
-}
-
-.refreshArea{
-    clear: both;
-
-    width: 300px;
-    margin: 5px auto;
-    padding: 5px;
-    text-align: center;
-    background: orange;
+    background: lime;
 }
 
 .refreshButton
@@ -154,7 +133,7 @@ body
 
     color: white;
     border: 0;
-    background: #454545;
+    background: orange;
 }
 
 h1
