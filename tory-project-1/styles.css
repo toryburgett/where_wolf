@@ -49,6 +49,10 @@ body
     background: powderBlue;
 }
 
+#correctAnswer{
+    height: 200px;
+}
+
 
 .answerChoice
 {
@@ -78,6 +82,30 @@ body
     /*display: inline-block;
     vertical-align: middle;*/
     padding: 10px 0px;
+}
+
+.nextArea{
+    clear: both;
+
+    width: 300px;
+    margin: 5px auto;
+    padding: 10px 5px;
+    text-align: center;
+    background: lime;
+}
+
+.nextButton
+{
+    clear: both;
+
+    margin: 0 auto;
+    text-align: center;
+
+    padding: 7px 10px;
+
+    color: white;
+    border: 0;
+    background: #454545;
 }
 
 
