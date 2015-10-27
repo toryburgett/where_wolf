@@ -1,16 +1,16 @@
 $(document).ready(function(){
 
   //Quiz questions
-  var question1 = {question: "Question 1, answer is 1", thetrue: "1", thefalse: "2"};
-  var question2 = {question: "Question 2, answer is it's me", mcA: "not me", mcB: "it's me", mcC: "read these", mcD: "I give up"};
-  var question3 = {question: "Question 3, answer is dogs", thetrue: "cats", thefalse: "dogs"};
-  var question4 = {question: "Question 4, answer is Hello", thetrue: "Hello", thefalse: "Goodbye"};
-  var question5 = {question: "Question 5, answer is A", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice"};
-  var question6 = {question: "Question 6, answer is Yes", thetrue: "Yes", thefalse: "No"};
-  var question7 = {question: "Question 7, answer is True", thetrue: "True", thefalse: "False"};
-  var question8 = {question: "Question 8, answer is C Choice", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice"};
-  var question9 = {question: "Question 9, answer is Yellow", thetrue: "Red", thefalse: "Yellow"};
-  var question10 = {question: "Question 10, answer is B", thetrue: "A", thefalse: "B"};
+  var question1 = {question: "Question 1, answer is 1", thetrue: "1", thefalse: "2", answerText: "Describing question1 answer"};
+  var question2 = {question: "Question 2, answer is it's me", mcA: "not me", mcB: "it's me", mcC: "read these", mcD: "I give up", answerText: "Describing question2 answer"};
+  var question3 = {question: "Question 3, answer is dogs", thetrue: "cats", thefalse: "dogs", answerText: "Describing question3 answer"};
+  var question4 = {question: "Question 4, answer is Hello", thetrue: "Hello", thefalse: "Goodbye", answerText: "Describing question4 answer"};
+  var question5 = {question: "Question 5, answer is A", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice", answerText: "Describing question5 answer"};
+  var question6 = {question: "Question 6, answer is Yes", thetrue: "Yes", thefalse: "No", answerText: "Describing question6 answer"};
+  var question7 = {question: "Question 7, answer is True", thetrue: "True", thefalse: "False", answerText: "Describing question7 answer"};
+  var question8 = {question: "Question 8, answer is C Choice", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice", answerText: "Describing question8 answer"};
+  var question9 = {question: "Question 9, answer is Yellow", thetrue: "Red", thefalse: "Yellow", answerText: "Describing question9 answer"};
+  var question10 = {question: "Question 10, answer is B", thetrue: "A", thefalse: "B", answerText: "Describing question10 answer"};
   var theQuiz = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 
   //Hides the questions from the page loading
@@ -54,7 +54,6 @@ $(document).ready(function(){
     $(someElement).on("click", function(){
       $(someElement).hide();
       $(someElement).stop();
-      $(someElement).css("background-color", submitButtonColor);
       $(someElement).off("click");
     });
     $(someElement).fadeIn('slow', function () {
@@ -73,23 +72,30 @@ $(document).ready(function(){
   };
 
 
-
-  // only one choice is selected
-  $(".answerChoice").on("click", function(){
-    if ($(this).css("background-color")!=selectedColor){
-      $(".answerChoice").css("background-color", unselectedColor);
-      $(this).css("background-color", selectedColor);
-    }
-    fadeThis(".submitButton");
-  });
+  //updates with how far you are in quiz
+  var updateProgressBar = function(){
+    var progressHere = ((questionCounter-1)/numOfQuestions)*100;
+    $(".progressMade").css("width", (progressHere)+"%");
+    $(".progressToGo").css("width", (100-progressHere)+"%");
+  };
 
   //When on the right question, check answer pulls up the right answerType and verifies that the correct answer has the right background-color color when submit is clicked
   var checkAnswer = function(questionNumber, answerType, correctAnswer){
     if(questionCounter===questionNumber){
+      // only one choice is selected
+      $(".answerChoice").on("click", function(){
+        if ($(this).css("background-color")!=selectedColor){
+          $(".answerChoice").css("background-color", unselectedColor);
+          $(this).css("background-color", selectedColor);
+        }
+        fadeThis(".submitButton");
+        $(".submitButton").on("click", function(){
+          $(".answerChoice").off("click");
+        });
+      });
       //Buttons - hide next show submit
       $(".nextButton").hide();
       $(".submitButton").show();
-      $(".submitButton").css("background-color", submitButtonColor);
       $(".submitButton").css("opacity", 1);
       //Answers - hide, then show relevant answer answer
       if(answerType==="#itsTrueFalse"){
@@ -111,6 +117,8 @@ $(document).ready(function(){
       //add event listener for submit
       $(".submitButton").on("click", function(){
         event.preventDefault();
+        //update Progress Bar
+        updateProgressBar();
         //what is the correctAnswer's background-color color?
         var correctAnswerColor;
         correctAnswerColor = $(correctAnswer).css("background-color");
@@ -120,26 +128,40 @@ $(document).ready(function(){
         if(correctAnswerColor === selectedColor){
           answerCounter++;
           console.log("Question "+questionCounter+" right. AnswerCounter: "+answerCounter);
+          $("#correctAnswer").show();
+          $("#correctAnswer").html("<p> Correct! "+theQuiz[questionNumber-1].answerText+"</p>");
+          $("#correctAnswer").css("border","3px solid "+rightAnswerColor);
         }
         else if(correctAnswerColor === unselectedColor){
+          var showRightAnswerDescription = function(){
+            $("#correctAnswer").show();
+            $("#correctAnswer").html("<p>"+theQuiz[questionNumber-1].answerText+"</p>");
+            $("#correctAnswer").css("border","3px solid "+wrongAnswerColor);
+          };
           //make selected answer show up as wrong
           if ( (correctAnswer!="#true") && ($("#true").css("background-color") === selectedColor)){
             $("#true").css("background-color", wrongAnswerColor);
+            showRightAnswerDescription();
           }
           else if ( (correctAnswer!="#false") && ($("#false").css("background-color") === selectedColor)){
             $("#false").css("background-color", wrongAnswerColor);
+            showRightAnswerDescription();
           }
           else if ( (correctAnswer!="#mcA") && ($("#mcA").css("background-color") === selectedColor)){
             $("#mcA").css("background-color", wrongAnswerColor);
+            showRightAnswerDescription();
           }
           else if ( (correctAnswer!="#mcB") && ($("#mcB").css("background-color") === selectedColor)){
             $("#mcB").css("background-color", wrongAnswerColor);
+            showRightAnswerDescription();
           }
           else if ( (correctAnswer!="#mcC") && ($("#mcC").css("background-color") === selectedColor)){
             $("#mcC").css("background-color", wrongAnswerColor);
+            showRightAnswerDescription();
           }
           else if ( (correctAnswer!="#mcD") && ($("#mcD").css("background-color") === selectedColor)){
             $("#mcD").css("background-color", wrongAnswerColor);
+            showRightAnswerDescription();
           }
           console.log("Question "+questionCounter+" wrong. AnswerCounter: "+answerCounter);
         }
@@ -194,7 +216,9 @@ $(document).ready(function(){
     $(".nextButton").text("NEXT");
     if (questionCounter < (numOfQuestions+1)){
       //show the progressBar
-      
+      $(".progressArea").show();
+      //hide answer answer
+      $(".answerArea").hide();
       //show the correct question
       $("#question"+(questionCounter-1)).hide();
       $("#question"+questionCounter).show();
@@ -223,6 +247,8 @@ $(document).ready(function(){
       $("#question"+(questionCounter-1)).hide();
       $(".questionStart").show();
       $(".questionStart").text("Thank you for playing. You answered "+answerCounter+" out of "+(questionCounter-1)+" questions correctly.");
+      //hide progressBar
+      $(".progressArea").hide();
       //Add one to numTimesPlayed
       numTimesPlayed++;
       //Create Hall of Glory

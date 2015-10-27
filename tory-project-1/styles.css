@@ -62,9 +62,9 @@ body
 
 #correctAnswer
 {
-    height: 200px;
+    background-color: #454545;
+    color: white;
 }
-
 
 .answerChoice
 {
@@ -180,21 +180,25 @@ h2
 .progressArea
 {
     width: 300px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 5px;
 
+    border: 2px solid rgba(200,30,200,.5);
+    background: rgba(200,30,200,.5);
     text-align: center;
 
 }
 .progressMade
 {
     width: 0%;
+    height: 10px;
     background: purple;
     float:left;
 }
 .progressToGo
 {
     width: 100%;
+    height: 10px;
     background: yellow;
     float:left;
 }
