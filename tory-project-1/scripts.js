@@ -21,6 +21,7 @@ $(document).ready(function(){
   $(".submitButton").hide();
   $(".gloryArea").hide();
   $(".progressArea").hide();
+  $(".timerArea").hide();
 
   //Counts what question you are currently on, How many questions did you get right, how many questions have I made?, how many times have you played? What is the highest score?
   var questionCounter = 1;
@@ -84,11 +85,11 @@ $(document).ready(function(){
       stopWatch = setInterval(updateTime(), 1000);
     };
 
-    //when you're answering a question, show the question area
-    if((questionTimer!==numOfQuestions)||((questionTimer!==0))){
-      $(".nextButton").on("click", function(){
-        //show the question area & start the timer
-        $(".questionArea").show();
+    // //when you're answering a question, show the question area
+    // if(questionCounter!==(numOfQuestions+1)){
+    //   $(".nextButton").on("click", function(){
+    //     //show the question area & start the timer
+        $(".timerArea").show();
         resetTime();
         startTime();
         //on pressing submit, stop the timer
@@ -98,9 +99,9 @@ $(document).ready(function(){
           console.log("User Score " + userScore);
           $(".submitButton").off("click");
         });
-        $(".nextButton").off("click");
-      });
-    }
+    //     $(".nextButton").off("click");
+    //   });
+    // }
     // startButton.addEventListener("click", handleClickEventStart);
     // stopButton.addEventListener("click", handleClickEventStop);
 
@@ -146,6 +147,7 @@ $(document).ready(function(){
   //When on the right question, check answer pulls up the right answerType and verifies that the correct answer has the right background-color color when submit is clicked
   var checkAnswer = function(questionNumber, answerType, correctAnswer){
     if(questionCounter===questionNumber){
+      startWatch();
       // only one choice is selected
       $(".answerChoice").on("click", function(){
         if ($(this).css("background-color")!=selectedColor){
