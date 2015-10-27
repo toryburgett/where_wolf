@@ -1,17 +1,34 @@
 $(document).ready(function(){
+  var question1;
+  var question2;
+  var question3;
+  var question4;
+  var question5;
+  var question6;
+  var question7;
+  var question8;
+  var question9;
+  var question10;
 
-  //Quiz questions
-  var question1 = {question: "Question 1, answer is 1", thetrue: "1", thefalse: "2", answerText: "Describing question1 answer"};
-  var question2 = {question: "Question 2, answer is it's me", mcA: "not me", mcB: "it's me", mcC: "read these", mcD: "I give up", answerText: "Describing question2 answer"};
-  var question3 = {question: "Question 3, answer is dogs", thetrue: "cats", thefalse: "dogs", answerText: "Describing question3 answer"};
-  var question4 = {question: "Question 4, answer is Hello", thetrue: "Hello", thefalse: "Goodbye", answerText: "Describing question4 answer"};
-  var question5 = {question: "Question 5, answer is A", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice", answerText: "Describing question5 answer"};
-  var question6 = {question: "Question 6, answer is Yes", thetrue: "Yes", thefalse: "No", answerText: "Describing question6 answer"};
-  var question7 = {question: "Question 7, answer is True", thetrue: "True", thefalse: "False", answerText: "Describing question7 answer"};
-  var question8 = {question: "Question 8, answer is C Choice", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice", answerText: "Describing question8 answer"};
-  var question9 = {question: "Question 9, answer is Yellow", thetrue: "Red", thefalse: "Yellow", answerText: "Describing question9 answer"};
-  var question10 = {question: "Question 10, answer is B", thetrue: "A", thefalse: "B", answerText: "Describing question10 answer"};
-  var theQuiz = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
+
+  // //Quiz 1 questions
+  // var question1 = {question: "Question 1, answer is 1", thetrue: "1", thefalse: "2", answerText: "Describing question1 answer"};
+  // var question2 = {question: "Question 2, answer is it's me", mcA: "not me", mcB: "it's me", mcC: "read these", mcD: "I give up", answerText: "Describing question2 answer"};
+  // var question3 = {question: "Question 3, answer is dogs", thetrue: "cats", thefalse: "dogs", answerText: "Describing question3 answer"};
+  // var question4 = {question: "Question 4, answer is Hello", thetrue: "Hello", thefalse: "Goodbye", answerText: "Describing question4 answer"};
+  // var question5 = {question: "Question 5, answer is A", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice", answerText: "Describing question5 answer"};
+  // var question6 = {question: "Question 6, answer is Yes", thetrue: "Yes", thefalse: "No", answerText: "Describing question6 answer"};
+  // var question7 = {question: "Question 7, answer is True", thetrue: "True", thefalse: "False", answerText: "Describing question7 answer"};
+  // var question8 = {question: "Question 8, answer is C Choice", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice", answerText: "Describing question8 answer"};
+  // var question9 = {question: "Question 9, answer is Yellow", thetrue: "Red", thefalse: "Yellow", answerText: "Describing question9 answer"};
+  // var question10 = {question: "Question 10, answer is B", thetrue: "A", thefalse: "B", answerText: "Describing question10 answer"};
+
+
+
+  var theQuiz;
+  // = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
+
+
 
   //Hides elements from appearing
   $(".question").hide();
@@ -26,9 +43,10 @@ $(document).ready(function(){
   //Counts what question you are currently on, How many questions did you get right, how many questions have I made?, how many times have you played? What is the highest score?
   var questionCounter = 1;
   var answerCounter = 0;
-  var numOfQuestions = 10;
+  var numOfQuestions;
   var numTimesPlayed = 0;
   var highScore = 0;
+  var choosenQuiz;
 
   // Timer Variables
   var timeAllowed = 600;
@@ -43,77 +61,17 @@ $(document).ready(function(){
   var otherScoreColor = "rgb(128, 128, 128)";
   var submitButtonColor = "rgb(0, 255, 0)";
 
-  //create quiz questions divs
-  for(i=0; i<(numOfQuestions+1); i++){
-    if(i===0){
-      $(".questionArea").append("<div class=\"questionStart\" id=\"question"+(i)+"\">Hello! Would you like to play a game?</div>");
-    }
-    else{
-      $(".questionArea").append("<div class=\"question\" id=\"question"+(i)+"\"></div>");
-    }
-  }
+  // //create quiz questions divs
+  // for(i=0; i<(numOfQuestions+1); i++){
+  //   if(i===0){
+  //     $(".questionArea").append("<div class=\"questionStart\" id=\"question"+(i)+"\">Hello! Would you like to play a game?</div>");
+  //   }
+  //   else{
+  //     $(".questionArea").append("<div class=\"question\" id=\"question"+(i)+"\"></div>");
+  //   }
+  // }
 
-  // ******************************************************
-  // TIMER AREA START ******************
-  // Based off code created from timer.js <https://github.com/toryburgett/timer_js/blob/master/timers.js>
-  // startWatch will create a countdown timer. More points will be rewarded if a user answers a question quickly
-  // ******************************************************
-
-  var startWatch = function(){
-    //Variables seconds & timerID
-    var seconds = 0;
-    var timerIDSelector = $(".questionTimer");
-    var stopWatch;
-
-    var updateTime = function(){
-      seconds++;
-      timerIDSelector.text("COUNTDOWN: "+seconds);
-    };
-    //Stop the timer
-    var stopTime = function(){
-      clearInterval(stopWatch);
-      seconds = seconds-1;
-      updateTime();
-    };
-    //Reset time
-    var resetTime = function(){
-      seconds = -1;
-      updateTime();
-    };
-    //Starts & updates timer
-    var startTime = function(){
-      stopWatch = setInterval(updateTime(), 1000);
-    };
-
-    // //when you're answering a question, show the question area
-    // if(questionCounter!==(numOfQuestions+1)){
-    //   $(".nextButton").on("click", function(){
-    //     //show the question area & start the timer
-        $(".timerArea").show();
-        resetTime();
-        startTime();
-        //on pressing submit, stop the timer
-        $(".submitButton").on("click", function(){
-          stopTime();
-          userScore = userScore + seconds;
-          console.log("User Score " + userScore);
-          $(".submitButton").off("click");
-        });
-    //     $(".nextButton").off("click");
-    //   });
-    // }
-    // startButton.addEventListener("click", handleClickEventStart);
-    // stopButton.addEventListener("click", handleClickEventStop);
-
-  };
-
-
-
-  // ******************************************************
-  // TIMER AREA STOP ******************
-  // ******************************************************
-
-
+$(".questionArea").append("<div class=\"questionStart\" id=\"question0\">Hello! Would you like to play a game?</div>");
 
   //Help from this website: <http://stackoverflow.com/questions/3451407/jquery-fadein-fadeout-repeatedly/3451505#3451505>
   var fadeThis = function(someElement){
@@ -147,7 +105,7 @@ $(document).ready(function(){
   //When on the right question, check answer pulls up the right answerType and verifies that the correct answer has the right background-color color when submit is clicked
   var checkAnswer = function(questionNumber, answerType, correctAnswer){
     if(questionCounter===questionNumber){
-      startWatch();
+
       // only one choice is selected
       $(".answerChoice").on("click", function(){
         if ($(this).css("background-color")!=selectedColor){
@@ -248,13 +206,13 @@ $(document).ready(function(){
         $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
         $(".turnsOfGlory").css("background-color", otherScoreColor);
       }
-      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- Perfect Score! </span></p>");
+      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- Perfect Score! </span></p>");
       highScore = turnScore;
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
     }
     else if (((turnScore > highScore)&&(highScore===0))||(turnScore===highScore)){
-      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
+      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
       highScore = turnScore;
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
@@ -263,13 +221,13 @@ $(document).ready(function(){
       $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
       $(".turnsOfGlory").css("background-color", otherScoreColor);
 
-      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
+      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
       highScore = turnScore;
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
     }
     else {
-      $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\">Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"</p>");
+      $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"</p>");
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
     }
@@ -278,64 +236,137 @@ $(document).ready(function(){
   //This is the meat of the script file
   //Brings the user to the right question
   $(".nextButton").on("click", function(){
-    event.preventDefault();
-    $(".nextButton").text("NEXT");
-    if (questionCounter < (numOfQuestions+1)){
-      //show the progressBar
-      $(".progressArea").show();
-      //hide answer answer
-      $(".answerArea").hide();
-      //show the correct question
-      $("#question"+(questionCounter-1)).hide();
-      $("#question"+questionCounter).show();
-      //return default colors to answer choice
-      $(".answerChoice").css("background-color", unselectedColor);
-      //get into what answers to show, and how to grade the answers
-      checkAnswer(1, "#itsTrueFalse", "#true");
-      checkAnswer(2, "#multipleChoice", "#mcB");
-      checkAnswer(3, "#itsTrueFalse", "#false");
-      checkAnswer(4, "#itsTrueFalse", "#true");
-      checkAnswer(5, "#multipleChoice", "#mcA");
-      checkAnswer(6, "#itsTrueFalse", "#true");
-      checkAnswer(7, "#itsTrueFalse", "#true");
-      checkAnswer(8, "#multipleChoice", "#mcC");
-      checkAnswer(9, "#itsTrueFalse", "#false");
-      checkAnswer(10, "#itsTrueFalse", "#false");
+    //HEY, to play you have to choose a quiz. Some people.
+    if(($(".quiz1").prop("checked")===false)&&(($(".quiz2").prop("checked")===false))){
+      $(".quizChoicesText").text("Hi! Please choose a quiz, and then hit start to begin");
     }
-    else if (questionCounter === (numOfQuestions+1)){
-      //Answers
-      $(".answerArea").hide();
-      //Buttons
-      $(".nextButton").hide();
-      $(".submitButton").hide();
-      $(".refreshButton").show();
-      //Questions
-      $("#question"+(questionCounter-1)).hide();
-      $(".questionStart").show();
-      $(".questionStart").text("Thank you for playing. You answered "+answerCounter+" out of "+(questionCounter-1)+" questions correctly.");
-      //hide progressBar
-      $(".progressArea").hide();
-      //Add one to numTimesPlayed
-      numTimesPlayed++;
-      //Create Hall of Glory
-      createHallOfGlory();
-      // Whhen you click on the refreshButton brings you to front page of quiz
-      $(".refreshButton").on("click", function(){
-        event.preventDefault();
+    else{
+      //create quiz questions divs
+      //choose quiz1
+      if(($(".quiz1").prop("checked")===true)&&(($(".quiz2").prop("checked")===false))){
+        //Quiz 1 questions
+        question1 = {question: "Question 1, answer is 1", thetrue: "1", thefalse: "2", answerText: "Describing question1 answer"};
+        question2 = {question: "Question 2, answer is it's me", mcA: "not me", mcB: "it's me", mcC: "read these", mcD: "I give up", answerText: "Describing question2 answer"};
+        question3 = {question: "Question 3, answer is dogs", thetrue: "cats", thefalse: "dogs", answerText: "Describing question3 answer"};
+        question4 = {question: "Question 4, answer is Hello", thetrue: "Hello", thefalse: "Goodbye", answerText: "Describing question4 answer"};
+        question5 = {question: "Question 5, answer is A", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice", answerText: "Describing question5 answer"};
+        question6 = {question: "Question 6, answer is Yes", thetrue: "Yes", thefalse: "No", answerText: "Describing question6 answer"};
+        question7 = {question: "Question 7, answer is True", thetrue: "True", thefalse: "False", answerText: "Describing question7 answer"};
+        question8 = {question: "Question 8, answer is C Choice", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice", answerText: "Describing question8 answer"};
+        question9 = {question: "Question 9, answer is Yellow", thetrue: "Red", thefalse: "Yellow", answerText: "Describing question9 answer"};
+        question10 = {question: "Question 10, answer is B", thetrue: "A", thefalse: "B", answerText: "Describing question10 answer"};
+        //setting the quiz
+        theQuiz = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
+        //right. and how many questions are there?
+        numOfQuestions = 10;
+        for(i=0; i<(numOfQuestions+1); i++){
+          if(i===0){
+            console.log("skipping overwriting 1!");
+          }
+          else{
+            $(".questionArea").append("<div class=\"question\" id=\"question"+(i)+"\"></div>");
+          }
+        }
+        //what is your quiz called
+        choosenQuiz = "1";
+      }
+      else if (($(".quiz1").prop("checked")===false)&&(($(".quiz2").prop("checked")===true))){
+        //Quiz 2 questions
+        question1 = {question: "Question 1, answer is it's me", mcA: "not me", mcB: "it's me", mcC: "read these", mcD: "I give up", answerText: "Describing question2 answer"};
+        question2 = {question: "Question 2, answer is 2", thetrue: "1", thefalse: "2", answerText: "Describing question1 answer"};
+        //setting the quiz
+        theQuiz = [question1, question2];
+        //right. and how many questions are there?
+        numOfQuestions = 2;
+        for(i=0; i<(numOfQuestions+1); i++){
+          if(i===0){
+            console.log("skipping overwriting 1!");
+          }
+          else{
+            $(".questionArea").append("<div class=\"question\" id=\"question"+(i)+"\"></div>");
+          }
+        }
+        //what is your quiz called
+        choosenQuiz = "2";
+      }
+      else{
+        alert("Something went wrong");
+      }
+      $(".quizChoices").hide();
+      event.preventDefault();
+      $(".nextButton").text("NEXT");
+      if (questionCounter < (numOfQuestions+1)){
+        // //Start timer through startWatch
+        // $(".timerArea").show();
+        // startWatch();
+        //show the progressBar
+        $(".progressArea").show();
+        //hide answer answer
+        $(".answerArea").hide();
+        //show the correct question
+        $("#question"+(questionCounter-1)).hide();
+        $("#question"+questionCounter).show();
+        //return default colors to answer choice
+        $(".answerChoice").css("background-color", unselectedColor);
+        //get into what answers to show, and how to grade the answers
+        //For Quiz1
+        if(($(".quiz1").prop("checked")===true)&&(($(".quiz2").prop("checked")===false))){
+          checkAnswer(1, "#itsTrueFalse", "#true");
+          checkAnswer(2, "#multipleChoice", "#mcB");
+          checkAnswer(3, "#itsTrueFalse", "#false");
+          checkAnswer(4, "#itsTrueFalse", "#true");
+          checkAnswer(5, "#multipleChoice", "#mcA");
+          checkAnswer(6, "#itsTrueFalse", "#true");
+          checkAnswer(7, "#itsTrueFalse", "#true");
+          checkAnswer(8, "#multipleChoice", "#mcC");
+          checkAnswer(9, "#itsTrueFalse", "#false");
+          checkAnswer(10, "#itsTrueFalse", "#false");
+        }
+        if(($(".quiz1").prop("checked")===false)&&(($(".quiz2").prop("checked")===true))){
+          checkAnswer(1, "#multipleChoice", "#mcB");
+          checkAnswer(2, "#itsTrueFalse", "#false");
+        }
+      }
+      else if (questionCounter === (numOfQuestions+1)){
+        //Answers
+        $(".answerArea").hide();
         //Buttons
-        $(".nextButton").show();
-        $(".nextButton").text("START");
-        $(".refreshButton").hide();
+        $(".nextButton").hide();
+        $(".submitButton").hide();
+        $(".refreshButton").show();
         //Questions
-        $("#question0").show();
-        $("#question0").text("Hello! Would you like to play a game?");
-        // //Do not continue to track this event click...
-        $(".refreshButton").off("click");
-      });
-      //Variables
-      questionCounter = 0;
-      answerCounter = 0;
+        $("#question"+(questionCounter-1)).hide();
+        $(".questionStart").show();
+        $(".questionStart").text("Thank you for playing. You answered "+answerCounter+" out of "+(questionCounter-1)+" questions correctly.");
+        //hide progressBar
+        $(".progressArea").hide();
+        //Add one to numTimesPlayed
+        numTimesPlayed++;
+        //Create Hall of Glory
+        createHallOfGlory();
+        // Whhen you click on the refreshButton brings you to front page of quiz
+        $(".refreshButton").on("click", function(){
+          event.preventDefault();
+          //Buttons
+          $(".nextButton").show();
+          $(".nextButton").text("START");
+          $(".refreshButton").hide();
+          //Questions
+          $(".questionArea").html("<div class=\"questionStart\" id=\"question0\">Hello! Would you like to play a game?</div>");
+          $("#question0").show();
+          $("#question0").text("Hello! Would you like to play a game?");
+          //quizes
+          $(".quiz1").prop("checked", false);
+          $(".quiz2").prop("checked", false);
+          $(".quizChoices").show();
+          //Do not continue to track this event click...
+          $(".refreshButton").off("click");
+        });
+        //Variables
+        questionCounter = 0;
+        answerCounter = 0;
+      }
+      questionCounter++;
     }
-    questionCounter++;
   });
 });
