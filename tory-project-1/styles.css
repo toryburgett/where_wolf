@@ -166,8 +166,7 @@ h2
     font-size: 14px;
 }
 
-.gloryArea
-{
+.gloryArea{
     width: 300px;
     margin: 0 auto;
     padding: 5px;
@@ -177,8 +176,7 @@ h2
     background: gray;
 }
 
-.progressArea
-{
+.progressArea{
     width: 300px;
     margin: 20px auto;
     padding: 5px;
@@ -188,17 +186,25 @@ h2
     text-align: center;
 
 }
-.progressMade
-{
+.progressMade{
     width: 0%;
     height: 10px;
     background: purple;
     float:left;
 }
-.progressToGo
-{
+.progressToGo{
     width: 100%;
     height: 10px;
     background: yellow;
     float:left;
+}
+
+.timerArea{
+    width: 300px;
+    margin: 0 auto;
+    padding: 5px;
+
+    text-align: center;
+
+    background: lime;
 }

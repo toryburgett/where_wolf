@@ -13,7 +13,7 @@ $(document).ready(function(){
   var question10 = {question: "Question 10, answer is B", thetrue: "A", thefalse: "B", answerText: "Describing question10 answer"};
   var theQuiz = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 
-  //Hides the questions from the page loading
+  //Hides elements from appearing
   $(".question").hide();
   $("#question0").show();
   $(".answerArea").hide();
@@ -28,6 +28,10 @@ $(document).ready(function(){
   var numOfQuestions = 10;
   var numTimesPlayed = 0;
   var highScore = 0;
+
+  // Timer Variables
+  var timeAllowed = 600;
+  var userScore = 0;
 
   //What should the color be for selected items vs items not selected
   var selectedColor = "rgb(255, 165, 0)";
@@ -47,6 +51,67 @@ $(document).ready(function(){
       $(".questionArea").append("<div class=\"question\" id=\"question"+(i)+"\"></div>");
     }
   }
+
+  // ******************************************************
+  // TIMER AREA START ******************
+  // Based off code created from timer.js <https://github.com/toryburgett/timer_js/blob/master/timers.js>
+  // startWatch will create a countdown timer. More points will be rewarded if a user answers a question quickly
+  // ******************************************************
+
+  var startWatch = function(){
+    //Variables seconds & timerID
+    var seconds = 0;
+    var timerIDSelector = $(".questionTimer");
+    var stopWatch;
+
+    var updateTime = function(){
+      seconds++;
+      timerIDSelector.text("COUNTDOWN: "+seconds);
+    };
+    //Stop the timer
+    var stopTime = function(){
+      clearInterval(stopWatch);
+      seconds = seconds-1;
+      updateTime();
+    };
+    //Reset time
+    var resetTime = function(){
+      seconds = -1;
+      updateTime();
+    };
+    //Starts & updates timer
+    var startTime = function(){
+      stopWatch = setInterval(updateTime(), 1000);
+    };
+
+    //when you're answering a question, show the question area
+    if((questionTimer!==numOfQuestions)||((questionTimer!==0))){
+      $(".nextButton").on("click", function(){
+        //show the question area & start the timer
+        $(".questionArea").show();
+        resetTime();
+        startTime();
+        //on pressing submit, stop the timer
+        $(".submitButton").on("click", function(){
+          stopTime();
+          userScore = userScore + seconds;
+          console.log("User Score " + userScore);
+          $(".submitButton").off("click");
+        });
+        $(".nextButton").off("click");
+      });
+    }
+    // startButton.addEventListener("click", handleClickEventStart);
+    // stopButton.addEventListener("click", handleClickEventStop);
+
+  };
+
+
+
+  // ******************************************************
+  // TIMER AREA STOP ******************
+  // ******************************************************
+
 
 
   //Help from this website: <http://stackoverflow.com/questions/3451407/jquery-fadein-fadeout-repeatedly/3451505#3451505>
@@ -70,7 +135,6 @@ $(document).ready(function(){
       });
     }
   };
-
 
   //updates with how far you are in quiz
   var updateProgressBar = function(){

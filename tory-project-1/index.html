@@ -8,7 +8,6 @@
   <script src="scripts.js"></script>
 </head>
 <body>
-  <div class="clearfix">
     <div class="wrapper">
       <div class="questionArea">
       </div>
@@ -17,21 +16,20 @@
         <button class="submitButton">SUBMIT</button>
         <button class="refreshButton">PLAY AGAIN?</button>
       </div>
-      <div class="answerArea" id="itsTrueFalse">
-        <div class="clearfix">
+      <div class="answerArea clearfix" id="itsTrueFalse">
           <div class="answerChoice" id="true"><p>TRUE</p></div>
           <div class="answerChoice" id="false"><p>FALSE</p></div>
-        </div>
       </div>
-      <div class="answerArea" id="multipleChoice">
-        <div class="clearfix">
+      <div class="answerArea clearfix" id="multipleChoice">
           <div class="answerChoice" id="mcA"><p>A</p></div>
           <div class="answerChoice" id="mcB"><p>B</p></div>
           <div class="answerChoice" id="mcC"><p>C</p></div>
           <div class="answerChoice" id="mcD"><p>D</p></div>
-        </div>
       </div>
       <div class="answerArea" id="correctAnswer"></div>
+      <div class="timerArea">
+        <div class="questionTimer"></div>
+      </div>
       <div class="progressArea">
         <h2>Progress</h2>
         <div class="clearfix">
@@ -44,6 +42,5 @@
         <div class="hallOfGlory"></div>
       </div>
     </div>
-  </div>
 </body>
 </html>
