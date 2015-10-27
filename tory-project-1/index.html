@@ -8,35 +8,41 @@
   <script src="scripts.js"></script>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="questionArea">
-      <!-- <div class="questionStart" id="question0"> Hello! Would you like to play a game? </div>
-      <div class="question" id="question1">
+  <div class="clearfix">
+    <div class="wrapper">
+      <div class="questionArea">
       </div>
-      <div class="question" id="question2">
+      <div class="buttonArea">
+        <button class="nextButton">START</button>
+        <button class="submitButton">SUBMIT</button>
+        <button class="refreshButton">PLAY AGAIN?</button>
       </div>
-      <div class="question" id="question3">
-      </div> -->
-    </div>
-    <div class="answerArea" id="itsTrueFalse">
-      <div class="answerChoice" id="true"><p>TRUE</p></div>
-      <div class="answerChoice" id="false"><p>FALSE</p></div>
-    </div>
-    <div class="answerArea" id="multipleChoice">
-      <div class="answerChoice" id="mcA"><p>A</p></div>
-      <div class="answerChoice" id="mcB"><p>B</p></div>
-      <div class="answerChoice" id="mcC"><p>C</p></div>
-      <div class="answerChoice" id="mcD"><p>D</p></div>
-    </div>
-    <div class="answerArea" id="correctAnswer"></div>
-    <div class="buttonArea">
-      <button class="nextButton">START</button>
-      <button class="submitButton">SUBMIT</button>
-      <button class="refreshButton">PLAY AGAIN?</button>
-    </div>
-    <div class="gloryArea">
-      <h1>HALL OF GLORY</h1>
-      <div class="hallOfGlory"></div>
+      <div class="progressArea">
+        <h1>Progress</h1>
+        <div class="clearfix">
+          <div class="progressMade"></div>
+          <div class="progressToGo"></div>
+        </div>
+      </div>
+      <div class="answerArea" id="itsTrueFalse">
+        <div class="clearfix">
+          <div class="answerChoice" id="true"><p>TRUE</p></div>
+          <div class="answerChoice" id="false"><p>FALSE</p></div>
+        </div>
+      </div>
+      <div class="answerArea" id="multipleChoice">
+        <div class="clearfix">
+          <div class="answerChoice" id="mcA"><p>A</p></div>
+          <div class="answerChoice" id="mcB"><p>B</p></div>
+          <div class="answerChoice" id="mcC"><p>C</p></div>
+          <div class="answerChoice" id="mcD"><p>D</p></div>
+        </div>
+      </div>
+      <div class="answerArea" id="correctAnswer"></div>
+      <div class="gloryArea">
+        <h1>HALL OF GLORY</h1>
+        <div class="hallOfGlory"></div>
+      </div>
     </div>
   </div>
 </body>

@@ -1,16 +1,16 @@
 $(document).ready(function(){
 
   //Quiz questions
-  var question1 = {question: "What year is it?", thetrue: "2015", thefalse: "2095, YOURS TRULY"};
-  var question2 = {question: "What is right?", mcA: "not me", mcB: "it's me", mcC: "read these", mcD: "I give up"};
-  var question3 = {question: "Mmmmm watcha say? That it's \"all for the best\"?", thetrue: "Is that a song?", thefalse: "Of course it is"};
-  var question4 = {question: "True False, the answer is true", thetrue: "True", thefalse: "False"};
-  var question5 = {question: "MC Choice, answer is A", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice"};
-  var question6 = {question: "True False, the answer is true", thetrue: "True", thefalse: "False"};
-  var question7 = {question: "True False, the answer is true", thetrue: "True", thefalse: "False"};
-  var question8 = {question: "MC Choice, answer is C", mcA: "A -- Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice"};
-  var question9 = {question: "True False, the answer is false", thetrue: "True", thefalse: "False"};
-  var question10 = {question: "True False, the answer is false", thetrue: "True", thefalse: "False"};
+  var question1 = {question: "Question 1, answer is 1", thetrue: "1", thefalse: "2"};
+  var question2 = {question: "Question 2, answer is it's me", mcA: "not me", mcB: "it's me", mcC: "read these", mcD: "I give up"};
+  var question3 = {question: "Question 3, answer is dogs", thetrue: "cats", thefalse: "dogs"};
+  var question4 = {question: "Question 4, answer is Hello", thetrue: "Hello", thefalse: "Goodbye"};
+  var question5 = {question: "Question 5, answer is A", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice"};
+  var question6 = {question: "Question 6, answer is Yes", thetrue: "Yes", thefalse: "No"};
+  var question7 = {question: "Question 7, answer is True", thetrue: "True", thefalse: "False"};
+  var question8 = {question: "Question 8, answer is C Choice", mcA: "A Choice", mcB: "B Choice", mcC: "C Choice", mcD: "D Choice"};
+  var question9 = {question: "Question 9, answer is Yellow", thetrue: "Red", thefalse: "Yellow"};
+  var question10 = {question: "Question 10, answer is B", thetrue: "A", thefalse: "B"};
   var theQuiz = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 
   //Hides the questions from the page loading
@@ -20,6 +20,7 @@ $(document).ready(function(){
   $(".refreshButton").hide();
   $(".submitButton").hide();
   $(".gloryArea").hide();
+  $(".progressArea").hide();
 
   //Counts what question you are currently on, How many questions did you get right, how many questions have I made?, how many times have you played? What is the highest score?
   var questionCounter = 1;
@@ -31,12 +32,14 @@ $(document).ready(function(){
   //What should the color be for selected items vs items not selected
   var selectedColor = "rgb(255, 165, 0)";
   var unselectedColor = "rgb(255, 250, 205)";
-  var rightAnswerColor = "palegreen";
+  var rightAnswerColor = "rgb(152, 251, 152)";
   var wrongAnswerColor = "pink";
-  var highScoreColor = "rgb(0, 255, 0)";
-  var otherScoreColor = "rgb(255,255,255)";
+  var highScoreColor = "rgb(152, 251, 152)";
+  var otherScoreColor = "rgb(128, 128, 128)";
+  var submitButtonColor = "rgb(0, 255, 0)";
 
-  for(i=0; i<numOfQuestions; i++){
+  //create quiz questions divs
+  for(i=0; i<(numOfQuestions+1); i++){
     if(i===0){
       $(".questionArea").append("<div class=\"questionStart\" id=\"question"+(i)+"\">Hello! Would you like to play a game?</div>");
     }
@@ -45,12 +48,39 @@ $(document).ready(function(){
     }
   }
 
+
+  //Help from this website: <http://stackoverflow.com/questions/3451407/jquery-fadein-fadeout-repeatedly/3451505#3451505>
+  var fadeThis = function(someElement){
+    $(someElement).on("click", function(){
+      $(someElement).hide();
+      $(someElement).stop();
+      $(someElement).css("background-color", submitButtonColor);
+      $(someElement).off("click");
+    });
+    $(someElement).fadeIn('slow', function () {
+      fadeItOut();
+    });
+    function fadeItIn() {
+      $(someElement).fadeTo('slow', 1, function () {
+        fadeItOut();
+      });
+    }
+    function fadeItOut() {
+      $(someElement).fadeTo('slow', 0.5, function () {
+        fadeItIn();
+      });
+    }
+  };
+
+
+
   // only one choice is selected
   $(".answerChoice").on("click", function(){
     if ($(this).css("background-color")!=selectedColor){
       $(".answerChoice").css("background-color", unselectedColor);
       $(this).css("background-color", selectedColor);
     }
+    fadeThis(".submitButton");
   });
 
   //When on the right question, check answer pulls up the right answerType and verifies that the correct answer has the right background-color color when submit is clicked
@@ -59,6 +89,8 @@ $(document).ready(function(){
       //Buttons - hide next show submit
       $(".nextButton").hide();
       $(".submitButton").show();
+      $(".submitButton").css("background-color", submitButtonColor);
+      $(".submitButton").css("opacity", 1);
       //Answers - hide, then show relevant answer answer
       if(answerType==="#itsTrueFalse"){
         $("#multipleChoice").hide();
@@ -161,6 +193,8 @@ $(document).ready(function(){
     event.preventDefault();
     $(".nextButton").text("NEXT");
     if (questionCounter < (numOfQuestions+1)){
+      //show the progressBar
+      
       //show the correct question
       $("#question"+(questionCounter-1)).hide();
       $("#question"+questionCounter).show();

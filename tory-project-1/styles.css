@@ -7,6 +7,10 @@ body
     background: #454545;
 }
 
+.clearfix{
+    overflow: auto;
+}
+
 .wrapper
 {
     width: 500px;
@@ -19,24 +23,30 @@ body
 .questionArea
 {
     width: 300px;
-    padding: 5px;
     margin: 5px auto;
+    padding: 5px;
+
     text-align: center;
+
     background: plum;
 }
 
-.question{
+.question
+{
     width: 250px;
     margin: 0 auto;
     /*padding: 0px;*/
+
     background: rgba(200,30,200,.5);
 }
 
-.questionStart{
+.questionStart
+{
     width: 250px;
     margin: 0 auto;
     padding: 20px;
     /*padding: 0px;*/
+
     background: rgba(200,30,200,.5);
 }
 .answerArea
@@ -45,11 +55,13 @@ body
     /*height: 150px;*/
     /*padding: 5px;*/
     margin: 5px auto;
+
     text-align: center;
-    background: powderBlue;
+
 }
 
-#correctAnswer{
+#correctAnswer
+{
     height: 200px;
 }
 
@@ -66,31 +78,36 @@ body
     /*padding: 2px;*/
     margin: 2px;
 
-    background: lemonchiffon;
-
     color: #4d4d4d;
     border: 3px solid white;
+    background: lemonchiffon;
 }
 
-.answerChoice:hover{
+.answerChoice:hover
+{
     border: 3px solid pink;
 }
-.answerChoice:active{
+.answerChoice:active
+{
     background: orange;
 }
-.answerChoice p{
+.answerChoice p
+{
     /*display: inline-block;
     vertical-align: middle;*/
-    padding: 10px 0px;
+    padding: 10px 0;
 }
 
-.buttonArea{
+.buttonArea
+{
     clear: both;
 
     width: 300px;
     margin: 5px auto;
     padding: 10px 5px;
+
     text-align: center;
+
     background: #454545;
 }
 
@@ -99,9 +116,9 @@ body
     clear: both;
 
     margin: 0 auto;
-    text-align: center;
-
     padding: 7px 10px;
+
+    text-align: center;
 
     color: white;
     border: 0;
@@ -113,9 +130,9 @@ body
     clear: both;
 
     margin: 0 auto;
-    text-align: center;
-
     padding: 7px 10px;
+
+    text-align: center;
 
     color: white;
     border: 0;
@@ -127,9 +144,9 @@ body
     clear: both;
 
     margin: 0 auto;
-    text-align: center;
-
     padding: 7px 10px;
+
+    text-align: center;
 
     color: white;
     border: 0;
@@ -139,7 +156,7 @@ body
 h1
 {
     margin: 0 auto;
-    padding: 10px 30px 10px 10px;
+    padding: 5px 0px;
 
     text-align: center;
 }
@@ -149,6 +166,35 @@ h2
     font-size: 14px;
 }
 
-.hallOfGlory {
+.gloryArea
+{
+    width: 300px;
+    margin: 0 auto;
+    padding: 5px;
+
     text-align: center;
+
+    background: gray;
+}
+
+.progressArea
+{
+    width: 300px;
+    margin: 0 auto;
+    padding: 5px;
+
+    text-align: center;
+
+}
+.progressMade
+{
+    width: 0%;
+    background: purple;
+    float:left;
+}
+.progressToGo
+{
+    width: 100%;
+    background: yellow;
+    float:left;
 }
