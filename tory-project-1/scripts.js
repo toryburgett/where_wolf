@@ -285,7 +285,7 @@ $(".questionArea").append("<div class=\"questionStart\" id=\"question0\">Hello! 
         //get into what answers to show, and how to grade the answers
         //For Quiz1
         if(($(".quiz1").prop("checked")===true)&&(($(".quiz2").prop("checked")===false))){
-          checkAnswer(1, "#itsTrueFalse", "#false");
+          checkAnswer(1, "#itsTrueFalse", "#true");
           checkAnswer(2, "#multipleChoice", "#mcB");
           checkAnswer(3, "#itsTrueFalse", "#true");
           checkAnswer(4, "#itsTrueFalse", "#false");
