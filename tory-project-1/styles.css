@@ -219,3 +219,17 @@ h2
 
     background: orange;
 }
+
+a{
+    text-decoration: none;
+    text-decoration: underline;
+    color: white;
+}
+
+a:hover{
+    color: rgb(152, 251, 152);
+}
+
+a:visited{
+    color: plum;
+}
