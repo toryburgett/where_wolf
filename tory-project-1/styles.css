@@ -1,6 +1,6 @@
 *
 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Muli', sans-serif;
 }
 body
 {
@@ -24,6 +24,7 @@ body
 .questionArea
 {
     width: 300px;
+    height: 130px;
     margin: 5px auto;
     padding: 5px;
 
@@ -38,7 +39,7 @@ body
     margin: 0 auto;
     /*padding: 0px;*/
 
-    background: rgba(200,30,200,.5);
+    /*background: rgba(200,30,200,.5);*/
 }
 
 .questionStart
@@ -48,7 +49,7 @@ body
     padding: 20px;
     /*padding: 0px;*/
 
-    background: rgba(200,30,200,.5);
+    /*background: rgba(200,30,200,.5);*/
 }
 .answerArea
 {
@@ -174,7 +175,8 @@ h2
 
     text-align: center;
 
-    background: gray;
+    background: rgba(200,30,200,.5);
+    border: 2px solid rgba(200,30,200,.5);
 }
 
 .progressArea{

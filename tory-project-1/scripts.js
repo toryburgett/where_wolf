@@ -26,7 +26,8 @@ $(document).ready(function(){
   var answerCounter = 0;
   var numOfQuestions;
   var numTimesPlayed = 0;
-  var highScore = 0;
+  var highScoreQ1 = 0;
+  var highScoreQ2 = 0;
   var choosenQuiz;
 
   // Timer Variables
@@ -172,36 +173,36 @@ $(".questionArea").append("<div class=\"questionStart\" id=\"question0\">Hello! 
   };
 
   // Creates the Hall of Glory, a kind of scoreboard
-  var createHallOfGlory = function(){
+  var createHallOfGlory = function(highScore, qnumber){
     $(".gloryArea").show();
     var turnScore = ((answerCounter/numOfQuestions)*100);
     if(turnScore === 100){
       if (highScore !== 100){
-        $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
+        $(qnumber).find("span:contains( -- HIGH SCORE)").remove();
         $(".turnsOfGlory").css("background-color", otherScoreColor);
       }
-      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- Perfect Score! </span></p>");
+      $(qnumber).prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- Perfect Score! </span></p>");
       highScore = turnScore;
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
     }
     else if (((turnScore > highScore)&&(highScore===0))||(turnScore===highScore)){
-      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
+      $(qnumber).prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
       highScore = turnScore;
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
     }
     else if (turnScore > highScore){
-      $(".hallOfGlory").find("span:contains( -- HIGH SCORE)").remove();
+      $(qnumber).find("span:contains( -- HIGH SCORE)").remove();
       $(".turnsOfGlory").css("background-color", otherScoreColor);
 
-      $(".hallOfGlory").prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
+      $(qnumber).prepend("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\" style=\"background-color: "+highScoreColor+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"<span> -- HIGH SCORE</span></p>");
       highScore = turnScore;
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
     }
     else {
-      $(".hallOfGlory").append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\">Quiz "+choosenQuiz+",Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"</p>");
+      $(qnumber).append("<p class=\"turnsOfGlory\" id=\"game"+numTimesPlayed+"\">,Game "+numTimesPlayed+" -- scored "+answerCounter+" out of "+numOfQuestions+" -- "+turnScore.toFixed(2)+"</p>");
       console.log("turnScore"+turnScore);
       console.log("highScore"+highScore);
     }
@@ -316,8 +317,14 @@ $(".questionArea").append("<div class=\"questionStart\" id=\"question0\">Hello! 
         $(".progressArea").hide();
         //Add one to numTimesPlayed
         numTimesPlayed++;
-        //Create Hall of Glory
-        createHallOfGlory();
+        //Create Hall of Glory, attatch to the right quiz
+        if (choosenQuiz === "Hard Quiz"){
+          createHallOfGlory(highScoreQ1, "#firstQuiz");
+        }
+        else if (choosenQuiz === "Easy Quiz"){
+          createHallOfGlory(highScoreQ2, "#secondQuiz");
+        }
+
         // Whhen you click on the refreshButton brings you to front page of quiz
         $(".refreshButton").on("click", function(){
           event.preventDefault();
