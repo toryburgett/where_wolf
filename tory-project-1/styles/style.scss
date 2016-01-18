@@ -1,0 +1,116 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "variables";
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One|Cantarell);
+
+
+body{
+  @include background-image(url('images/nature-980147_1920.jpg'));
+}
+.clearfix{
+    overflow: auto;
+}
+
+.main{
+  @include outer-container;
+  background-color: $knightSecondaryDark;
+  color: $knightWhite;
+  font-family: 'Fjalla One', sans-serif;
+  .quizChoices{
+
+
+  }
+
+  .buttonArea{
+
+  }
+
+  .answerArea{
+
+  }
+
+  .progressArea{
+
+  }
+
+}
+
+.questionArea
+{
+}
+
+.question
+{
+}
+
+.questionStart
+{
+}
+.answerArea
+{
+}
+
+#correctAnswer
+{
+}
+
+.answerChoice
+{
+}
+
+.answerChoice:hover
+{
+}
+.answerChoice:active
+{
+}
+.answerChoice p
+{
+}
+
+.buttonArea
+{
+}
+
+.nextButton
+{
+}
+
+.submitButton
+{
+}
+
+.refreshButton
+{
+}
+
+h1
+{
+}
+
+h2
+{
+}
+
+.gloryArea{
+}
+
+.progressArea{
+}
+.progressMade{
+}
+.progressToGo{
+}
+
+.timerArea{
+}
+
+.quizChoices{
+}
+
+a{
+}
+a:hover{
+}
+a:visited{
+}

@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One|Cantarell);
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+body {
+  background-image: url("images/nature-980147_1920.jpg");
+  background-image: url("images/nature-980147_1920.jpg"); }
+
+.clearfix {
+  overflow: auto; }
+
+.main {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #161726;
+  color: #E7F2DF;
+  font-family: 'Fjalla One', sans-serif; }
+  .main::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+/*# sourceMappingURL=style.css.map */
