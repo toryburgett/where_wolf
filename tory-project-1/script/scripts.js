@@ -1,83 +1,41 @@
 $(document).ready(function(){
 
+  //hide quizGame
+  $("#quizGame").hide();
+
   //ajax request to quiz database
   var quiz;
-  var url = "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/f9a653331edd2a4f74055730eda9e344d0077045/quiz.json";
-  function getQuizQuestion(){
-    $.ajax({
-      url: url,
-      type: "get",
-      dataType: "json"
-    }).done(function(response){
-      console.log(response);
-      quiz = response;
+  var quizNum;
+  var quizNumOn = 0;
+  var url = "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/11fdde44e37630f59cf72b4143d399eda2fa8d69/quiz.json";
+
+
+  var playThisQuiz = function(num){
+    $("#welcomeIndex").hide();
+    $("#quizGame").show();
+    console.log("hello!");
+    $(".qTitle").html("<h1>"+quiz.quiz[num].questionTitle+"</h1>");
+    $(".qText").html("<h1>"+quiz.quiz[num].questionText+"</h1>");
+    quizNumOn ++;
+    console.log("quizNumOn "+quizNumOn);
+    $("#playQuiz").on("click", function(){
+      playThisQuiz(quizNumOn);
     });
-  }
-  getQuizQuestion();
-
-//Hides elements from appearing
-  $(".question").hide();
-  $("#question0").show();
-  $(".answerArea").hide();
-  $(".refreshButton").hide();
-  $(".submitButton").hide();
-  $(".gloryArea").hide();
-  $(".progressArea").hide();
-  $(".timerArea").hide();
-
-
-
-
-//Counts what question you are currently on, How many questions did you get right, how many questions have I made?, how many times have you played? What is the highest score?
-//   var questionCounter = 1;
-//   var answerCounter = 0;
-//   var numOfQuestions;
-//   var numTimesPlayed = 0;
-//   var highScoreQ1 = 0;
-//   var highScoreQ2 = 0;
-//   var choosenQuiz;
-//
-//   // Timer Variables
-//   var timeAllowed = 600;
-//   var userScore = 0;
-//
-  //What should the color be for selected items vs items not selected
-  var selectedColor = "rgb(255, 165, 0)";
-  var unselectedColor = "rgb(255, 250, 205)";
-  var rightAnswerColor = "rgb(152, 251, 152)";
-  var wrongAnswerColor = "pink";
-  var highScoreColor = "rgb(152, 251, 152)";
-  var otherScoreColor = "rgb(128, 128, 128)";
-  var submitButtonColor = "rgb(0, 255, 0)";
-
-  //Blinking Button
-  var fadeThis = function(someElement){
-    $(someElement).on("click", function(){
-      $(someElement).hide();
-      $(someElement).stop();
-      $(someElement).off("click");
-    });
-    $(someElement).fadeIn('slow', function () {
-      fadeItOut();
-    });
-    function fadeItIn() {
-      $(someElement).fadeTo('slow', 1, function () {
-        fadeItOut();
-      });
-    }
-    function fadeItOut() {
-      $(someElement).fadeTo('slow', 0.5, function () {
-        fadeItIn();
-      });
-    }
   };
 
-  // //updates with how far you are in quiz
-  // var updateProgressBar = function(){
-  //   var progressHere = ((questionCounter-1)/numOfQuestions)*100;
-  //   $(".progressMade").css("width", (progressHere)+"%");
-  //   $(".progressToGo").css("width", (100-progressHere)+"%");
-  // };
+  $.ajax({
+    url: url,
+    type: "get",
+    dataType: "json",
+    }).then(function(response){
+      quiz = response;
+      quizNum = quiz.length;
 
+      console.log(quiz);
 
+      $("#playQuiz").on("click", function(){
+        playThisQuiz(quizNumOn);
+      });
+
+  });
 });

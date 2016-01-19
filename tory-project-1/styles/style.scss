@@ -1,24 +1,47 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
 @import "variables";
+@import "refills";
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One|Cantarell);
+@import url(http://fonts.googleapis.com/css?family=Changa+One&effect=anaglyph);
 
+.main{
+  @include outer-container;
+  padding: 1em;
+  .content{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    .startQuiz{
+      text-align: center;
+      button{
+        padding: 10px 20px;
+        border: none;
+        color: $anaglyphWhite;
+        background-color: transparentize($anaglyphDarkBlue, .3);
+        border-radius: 3px;
+      }
+      button:hover{
+        background-color: $anaglyphDarkBlue;
+      }
+    }
 
-body{
-  @include background-image(url('images/nature-980147_1920.jpg'));
-}
-.clearfix{
-    overflow: auto;
+  }
+  .footing{
+    @include row();
+    text-align: center;
+    font-family: "Cantarell", sans-serif;
+    color: $anaglyphRedDark;
+    border-bottom: 1px solid $anaglyphRedDark;
+    border-right: 1px solid $anaglyphRedDark;
+    border-left: 1px solid $anaglyphRedDark;
+  }
 }
 
 .main{
   @include outer-container;
-  background-color: $knightSecondaryDark;
-  color: $knightWhite;
-  font-family: 'Fjalla One', sans-serif;
+  font-family: "Cantarell", sans-serif;
   .quizChoices{
-
-
+    @include span-columns(3);
   }
 
   .buttonArea{

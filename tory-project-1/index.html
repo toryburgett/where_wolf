@@ -7,94 +7,114 @@
   <!-- Javascript Files -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="script/scripts.js"></script>
+  <script src="script/nav.js"></script>
+
 
   <!-- Styles -->
   <!-- <link rel="stylesheet" href="styles/css/styles.css"> -->
   <link rel="stylesheet" href="styles/style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <!-- Font Files -->
   <!-- <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'> -->
 </head>
 <body>
 
+
+
+
   <div class="main">
+
     <div class="heading">
-    </div>
+      <header class="navigation" role="banner">
+        <div class="navigation-wrapper">
+          <a href="javascript:void(0" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+          <nav role="navigation">
+            <ul id="js-navigation-menu" class="navigation-menu show">
+              <li class="nav-link"><a href="#">QUIZZES</a></li>
+              <li class="nav-link"><a href="#">ABOUT</a></li>
+              <li class="nav-link"><a href="#">CONTACT</a></li>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-    <div class="questionArea">
-    </div>
-
-    <div class="optionArea">
-    </div>
-
-    <div class="footing">
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <hr>
+          <h1 class="font-effect-anaglyph">WHERE?WOLF</h1>
+          <hr>
+        </div>
+      </div>
     </div>
   </div>
 
-
-
-  <!-- <div class="main">
-
-    <div class="questionArea">
-    </div>
-
-    <div class="quizChoices">
-
-      <p class="quizChoicesText">Choose a quiz and hit start to begin</p>
-      <input type="radio" name="quiz" value="quiz1" class="quiz1"> Hard
-      <input type="radio" name="quiz" value="quiz2" class="quiz2"> Easy
-
-    </div>
-
-    <div class="buttonArea">
-      <button class="nextButton">START</button>
-      <button class="submitButton">SUBMIT</button>
-      <button class="refreshButton">PLAY AGAIN?</button>
-    </div>
-
-    <div class="answerArea clearfix" id="itsTrueFalse">
-      <div class="answerChoice" id="true"><p>TRUE</p></div>
-      <div class="answerChoice" id="false"><p>FALSE</p></div>
-    </div>
-
-    <div class="answerArea clearfix" id="multipleChoice">
-      <div class="answerChoice" id="mcA"><p>A</p></div>
-      <div class="answerChoice" id="mcB"><p>B</p></div>
-      <div class="answerChoice" id="mcC"><p>C</p></div>
-      <div class="answerChoice" id="mcD"><p>D</p></div>
-    </div>
-
-    <div class="answerArea clearfix" id="correctAnswer"></div>
-
-    <div class="timerArea">
-      <div class="questionTimer"></div>
-    </div>
-
-    <div class="progressArea">
-      <h2>Progress</h2>
-      <div class="clearfix">
-        <div class="progressMade"></div>
-        <div class="progressToGo"></div>
-      </div>
-    </div>
-
-    <div class="gloryArea">
-      <h1>HALL OF GLORY</h1>
-
-      <div class="hallOfGlory">
-        <h1>Hard Quiz</h1>
-        <div class="hallOfGlory" id="firstQuiz">
+  <div class="content" id="welcomeIndex">
+    <div class="side-image">
+      <div class="images-wrapper"></div>
+      <div class="side-image-content">
+        <h1>Quizzes About The Location of Wolves</h1>
+        <p>Play my quiz about the location of wolves.</p>
+        <p>Howl you do? Only one way to find out...</p>
+        <div class="startQuiz">
+          <button id="playQuiz">PLAY</button>
+        </div>
         </div>
       </div>
-
-      <div class="hallOfGlory">
-        <h1>Easy Quiz</h1>
-        <div class="hallOfGlory" id="secondQuiz">
-        </div>
-      </div>
-
     </div>
 
-  </div> -->
+    <div class="content" id="quizGame">
+      <div class="side-image">
+        <div class="images-wrapper"></div>
+        <div class="side-image-content">
+
+          <div class="questionArea">
+            <div class="qTitle"></div>
+            <div class="qText"></div>
+            <div class="qImage"></div>
+          </div>
+
+          <div class="startQuiz">
+            <div class="optionArea">
+              <div class="option" id="optionA">
+                <div class="optionTitle"></div>
+                <div class="optionText"></div>
+              </div>
+              <div class="option" id="optionB">
+                <div class="optionTitle"></div>
+                <div class="optionText"></div>
+              </div>
+              <div class="option" id="optionC">
+                <div class="optionTitle"></div>
+                <div class="optionText"></div>
+              </div>
+              <div class="option" id="optionD">
+                <div class="optionTitle"></div>
+                <div class="optionText"></div>
+              </div>
+            </div>
+          </div>
+          <button id="playQuiz">PLAY</button>
+          </div>
+        </div>
+
+
+
+
+
+      <div class="footer">
+        <div class="progressArea"></div>
+      </div>
+    </div>
+
+
+    <div class="footing">
+      <p>&copy Tory Burgett, 2016</p>
+    </div>
+  </div>
 </body>
 </html>
