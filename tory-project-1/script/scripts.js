@@ -24,14 +24,19 @@ $(document).ready(function(){
   // toggle submit button until answer is selected
   var holdSubmit = function(){
     if(answerSelect === 4){
-      $("#submit").hide();
-      $("#wait").show();
+      buttonVisible("#wait", "#submit", "#next");
       $(".optionTitle").css("background-color", "white");
     }else{
-      $("#submit").show();
-      $("#wait").hide();
+      buttonVisible("#submit", "#next", "#wait");
     }
   };
+  //show one button from submit area
+  var buttonVisible = function(show, hide1, hide2){
+    $(show).show();
+    $(hide1).hide();
+    $(hide2).hide();
+  };
+
   //render the question
   var newQuestionRender = function(quizQuest){
     $(".qTitle").html("<h1>"+quizQuest.questionTitle+"</h1>");
@@ -59,20 +64,16 @@ $(document).ready(function(){
       optionClickListen(i);
     }
   };
-
+  //check that the answer matches with correct one
   var checkAnswer = function(correctAnswer){
-    if(correctAnswer === answerSelect){
+    if(correctAnswer == answerSelect){
       answeredRight ++;
-      console.log("right - " + answeredRight);
     } else {
       answeredWrong ++;
-      console.log("wrong - " + answeredWrong);
     }
-
+    console.log("total: right = "+answeredRight+" | wrong = "+answeredWrong);
+    buttonVisible("#next", "#submit", "#wait");
   };
-
-
-
 
   var playThisQuiz = function(){
     if (quizNumOn === quiz.quiz.length){
@@ -80,10 +81,10 @@ $(document).ready(function(){
     } else {
       quizGameShow();
       newQuestionRender(quiz.quiz[quizNumOn]);
-
-      // checkAnswer(quiz.quiz[quizNumOn].correctAnswer);
-      console.log(quiz.quiz[quizNumOn]);
-      console.log("correctAnswer "+quiz.quiz[quizNumOn].correctAnswer);
+      $("#submit").off();
+      $("#submit").on("click", function(){
+        checkAnswer(quiz.quiz[(quizNumOn-1)].correctAnswer);
+      });
     }
   };
 
@@ -95,6 +96,6 @@ $(document).ready(function(){
     quizNum = quiz.length;
     console.log(quiz);
     $("#playQuiz").on("click", playThisQuiz);
-    $("#submit").on("click", playThisQuiz);
+    $("#next").on("click", playThisQuiz);
   });
 });
