@@ -13,18 +13,7 @@
     padding-bottom: 1em;
     .startQuiz{
       text-align: center;
-      button{
-        padding: 10px 20px;
-        border: none;
-        color: $anaglyphWhite;
-        background-color: transparentize($anaglyphDarkBlue, .3);
-        border-radius: 3px;
-      }
-      button:hover{
-        background-color: $anaglyphDarkBlue;
-      }
     }
-
   }
   .footing{
     @include row();
@@ -35,6 +24,16 @@
     border-right: 1px solid $anaglyphRedDark;
     border-left: 1px solid $anaglyphRedDark;
   }
+  button{
+    padding: 10px 20px;
+    border: none;
+    color: $anaglyphWhite;
+    background-color: transparentize($anaglyphDarkBlue, .3);
+    border-radius: 3px;
+  }
+  button:hover{
+    background-color: $anaglyphDarkBlue;
+  }
 }
 
 .main{
@@ -43,97 +42,20 @@
   .quizChoices{
     @include span-columns(3);
   }
+}
 
-  .buttonArea{
-
+.quizProgress{
+  width: 100%;
+  #progressDone{
+    background-color: $anaglyphRedDark;
+    height: 15px;
+    width: 0%;
+    float: left;
   }
-
-  .answerArea{
-
+  #progressToGo{
+    background-color: $anaglyphLightGrey;
+    height: 15px;
+    width: 100%;
+    float: left;
   }
-
-  .progressArea{
-
-  }
-
-}
-
-.questionArea
-{
-}
-
-.question
-{
-}
-
-.questionStart
-{
-}
-.answerArea
-{
-}
-
-#correctAnswer
-{
-}
-
-.answerChoice
-{
-}
-
-.answerChoice:hover
-{
-}
-.answerChoice:active
-{
-}
-.answerChoice p
-{
-}
-
-.buttonArea
-{
-}
-
-.nextButton
-{
-}
-
-.submitButton
-{
-}
-
-.refreshButton
-{
-}
-
-h1
-{
-}
-
-h2
-{
-}
-
-.gloryArea{
-}
-
-.progressArea{
-}
-.progressMade{
-}
-.progressToGo{
-}
-
-.timerArea{
-}
-
-.quizChoices{
-}
-
-a{
-}
-a:hover{
-}
-a:visited{
 }
