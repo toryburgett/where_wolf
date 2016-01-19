@@ -7,36 +7,30 @@ $(document).ready(function(){
   var answeredWrong;
   var answeredRight;
   var answerSelect = 4;
-  var url = "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/c866f01ade53151b001e9369eaf002a42591d45b/quiz.json";
+  var url = "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/6f2e585b33cc93ffffadbc28888a9e0a5ae9d634/quiz.json";
 
   // show pages
   var welcomeIndexShow = function(){
-    $("#welcomeIndex").show();
-    $("#quizGame").hide();
+    showVisible("#welcomeIndex","#quizGame", "#quizScore");
     quizNumOn = 0;
     answeredWrong = 0;
     answeredRight = 0;
   };
-  var quizGameShow = function(){
-    $("#welcomeIndex").hide();
-    $("#quizGame").show();
-  };
   // toggle submit button until answer is selected
   var holdSubmit = function(){
     if(answerSelect === 4){
-      buttonVisible("#wait", "#submit", "#next");
+      showVisible("#wait", "#submit", "#next");
       $(".optionTitle").css("background-color", "white");
     }else{
-      buttonVisible("#submit", "#next", "#wait");
+      showVisible("#submit", "#next", "#wait");
     }
   };
-  //show one button from submit area
-  var buttonVisible = function(show, hide1, hide2){
+  //show one
+  var showVisible = function(show, hide1, hide2){
     $(show).show();
     $(hide1).hide();
     $(hide2).hide();
   };
-
   //render the question
   var newQuestionRender = function(quizQuest){
     $(".qTitle").html("<h1>"+quizQuest.questionTitle+"</h1>");
@@ -71,15 +65,20 @@ $(document).ready(function(){
     } else {
       answeredWrong ++;
     }
-    console.log("total: right = "+answeredRight+" | wrong = "+answeredWrong);
-    buttonVisible("#next", "#submit", "#wait");
+    showVisible("#next", "#submit", "#wait");
+  };
+
+  var renderScore = function(){
+    showVisible("#quizScore", "#welcomeIndex", "#quizGame");
+    $(".score").html("total: right = "+answeredRight+" | wrong = "+answeredWrong);
+    $("#home").on("click", welcomeIndexShow);
   };
 
   var playThisQuiz = function(){
     if (quizNumOn === quiz.quiz.length){
-      welcomeIndexShow();
+      renderScore();
     } else {
-      quizGameShow();
+      showVisible("#quizGame", "#welcomeIndex", "#quizScore");
       newQuestionRender(quiz.quiz[quizNumOn]);
       $("#submit").off();
       $("#submit").on("click", function(){
