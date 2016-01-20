@@ -56,7 +56,7 @@
     .state("highscoreIndex", {
       url: "/highscore",
       templateUrl: "js/quizzes/highscores/index.html",
-      controller: "QuizShowController",
+      controller: "QuizIndexController",
       controllerAs: "HighscoreIndexViewModel"
     });
   }
