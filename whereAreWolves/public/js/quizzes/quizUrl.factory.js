@@ -4,20 +4,21 @@
   angular
   .module("quizzes")
   .factory("QuizUrlFactory", [
-    "$resource",
-    "$http",
     "$stateParams",
     "QuizFactory",
-    "$scope",
+    "$resource",
     QuizFactoryFunction
   ]);
 
-  function QuizFactoryFunction($resource, $http, $stateParams, $scope, QuizFactory){
+  function QuizFactoryFunction($stateParams, QuizFactory, $resource){
     var self = this;
     this.quiz = QuizFactory.get({_id: $stateParams._id});
-    $http.get(self.quiz.githubgist)
-      .then(function(response) {
-        $scope.quizArray = response.data.records;
-      });
+    // return $resource( (self.quiz.githubgist) , {}, {});
+
+
+
+
+
   }
+
 }());

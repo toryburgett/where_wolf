@@ -8,3 +8,15 @@
 <div data-ng-repeat="quiz in QuizIndexViewModel.quizzes | orderBy:'-created_at'">
   <p><a data-ui-sref="quizShow({_id: quiz._id})">{{quiz.name}} , then _id: {{quiz._id}}</a></p>
 </div>
+
+<div data-ng-repeat="quizUrl in QuizIndexViewModel.quizUrlData | orderBy:'-created_at'">
+  <p>{{quizUrl.quizTitle}}</p>
+  <div data-ng-repeat="quizUrlInfo in quizUrl.quiz">
+    <p>{{quizUrlInfo.questionTitle}}</p>
+    <p>{{quizUrlInfo.questionText}}</p>
+    <p>{{quizUrlInfo.correctAnswer}}</p>
+    <p>{{quizUrlInfo.answerExplained}}</p>
+    <div data-ng-repeat="quizUrlInfoOptions in quizUrlInfo.options">
+      <p>{{quizUrlInfoOptions}}</p>
+  </div>
+</div>

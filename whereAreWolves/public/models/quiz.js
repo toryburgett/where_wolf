@@ -35,5 +35,9 @@ Quiz.prototype = {
       console.log("js failed to load");
     });
     return request;
-  },
+  }
+  // fetchQuiz: function(){
+  //   var githubgist = this.githubgist;
+  //
+  // }
 };

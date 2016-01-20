@@ -10,3 +10,8 @@ As a user, I should be able to answer quiz questions, and change my answer befor
 As a user, I should learn after answering what questions I got right and what questions I got wrong.
 As a user, I should be able to compare my previous quiz scores to each other and see my grades.
 As a user, I should be able to know how far I am in my quiz process so that I know how long this quiz will take.
+
+
+
+Sass command:
+sass --watch public/styles/style.scss:public/styles/style.css
