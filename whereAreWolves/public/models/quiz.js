@@ -36,8 +36,4 @@ Quiz.prototype = {
     });
     return request;
   }
-  // fetchQuiz: function(){
-  //   var githubgist = this.githubgist;
-  //
-  // }
 };

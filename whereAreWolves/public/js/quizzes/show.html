@@ -2,7 +2,14 @@
 <p><dfn>Created:</dfn> {{QuizShowViewModel.quiz.created_at}}</p>
 <blockquote>{{QuizShowViewModel.quiz.githubgist}}</blockquote>
 
-<!-- <h2>Edit</h2>
-<div data-quiz-form data-quiz="QuizShowViewModel.quiz"></div>
-
-<img data-ng-src="{{QuizShowViewModel.quiz.photoUrl}}" src="#" alt="{{QuizShowViewModel.quiz.title}}" /> -->
+<div>
+  <p>{{QuizShowViewModel.quizUrlData[0].quizTitle}} Hello! </p>
+  <div data-ng-repeat="quizUrlInfo in QuizShowViewModel.quizUrlData[0].quiz">
+    <p>{{quizUrlInfo.questionTitle}}</p>
+    <p>{{quizUrlInfo.questionText}}</p>
+    <p>{{quizUrlInfo.correctAnswer}}</p>
+    <p>{{quizUrlInfo.answerExplained}}</p>
+    <div data-ng-repeat="quizUrlInfoOptions in quizUrlInfo.options">
+      <p>{{quizUrlInfoOptions}}</p>
+  </div>
+</div>
