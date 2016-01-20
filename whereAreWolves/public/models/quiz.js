@@ -22,7 +22,7 @@ Quiz.fetch = function() {
 
 Quiz.prototype = {
   fetchHighscores: function() {
-    var url = "/quizzes/" + this.id + "/highscores";
+    var url = "/quizzes/" + this._id + "/highscores";
     var request = $.getJSON(url)
     .then(function(response) {
       var highscores = [];

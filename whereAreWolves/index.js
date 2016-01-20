@@ -20,8 +20,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 
 var env = fs.existsSync(__dirname + '/env.js') ? require('./env') : process.env;
+
 app.set('view engine', 'hbs');
 app.set("views","./views");
+
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(morgan('dev'));
 app.use(cookieParser());

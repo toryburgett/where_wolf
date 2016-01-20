@@ -1,8 +1,8 @@
 var Highscore = function(info){
   this.score = info.score;
   this.username = info.username;
-  this.quizId = info._quizId;
-  this.id = info._id;
+  this.quizId = info.quizId;
+  this._id = info._id;
 };
 
 Highscore.create = function(info, quizId){
