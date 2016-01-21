@@ -1,7 +1,9 @@
-<h2>{{QuizShowViewModel.quiz.name}}</h2>
-<p><dfn>Created:</dfn> {{QuizShowViewModel.quiz.created_at}}</p>
-<blockquote>{{QuizShowViewModel.quiz.githubgist}}</blockquote>
+<h2> You Have Selected - {{QuizShowViewModel.quiz.name}}, {{QuizShowViewModel.quizUrlData[0].quizTitle}} </h2>
+  <button data-ng-sref="">BACK To QUIZZES</button>
+  <button data-ng-sref="">PLAY QUIZ</button>
 
+<!-- <p><dfn>Created:</dfn> {{QuizShowViewModel.quiz.created_at}}</p>
+<blockquote>{{QuizShowViewModel.quiz.githubgist}}</blockquote>
 <div>
   <p>{{QuizShowViewModel.quizUrlData[0].quizTitle}} Hello! </p>
   <div data-ng-repeat="quizUrlInfo in QuizShowViewModel.quizUrlData[0].quiz">
@@ -12,4 +14,4 @@
     <div data-ng-repeat="quizUrlInfoOptions in quizUrlInfo.options">
       <p>{{quizUrlInfoOptions}}</p>
   </div>
-</div>
+</div> -->

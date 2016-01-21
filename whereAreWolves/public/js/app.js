@@ -37,7 +37,7 @@
     })
     .state("quizPlay", {
       url: "/quiz/:_id/play",
-      templateUrl: "js/quizzes/play.html",
+      templateUrl: "js/quizzes/play/play.html",
       controller: "QuizShowController",
       controllerAs: "QuizPlayViewModel"
     })
