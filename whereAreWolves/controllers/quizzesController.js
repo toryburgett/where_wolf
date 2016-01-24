@@ -54,6 +54,13 @@ var router = {
     QuizModel.findById(req.params.id, function(err, quiz){
       res.json(quiz.highscores);
     });
+  },
+  allHighscores: function(req, res){
+    HighscoreModel.find({}, function(err, highscores){
+      res.json(highscores);
+    });
   }
+
+
 };
 module.exports = router;

@@ -11,9 +11,6 @@
   function QuizFactoryFunction($resource){
     return $resource("http://localhost:8080/quizzes/:_id", {}, {
       update: {method: "PUT"}
-
-
-
     });
   }
 }());

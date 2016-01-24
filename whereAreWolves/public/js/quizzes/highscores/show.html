@@ -1,0 +1,5 @@
+<p>Highscore page</p>
+
+<div data-ng-repeat="highscore in HighscoreShowViewModel.quizHighscores | orderBy:'-created_at'">
+  <p>{{highscore.username}} , Score: {{highscore.score}}</a></p>
+</div>

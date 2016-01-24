@@ -4,7 +4,8 @@
   angular
   .module("wherewolves", [
     "ui.router",
-    "quizzes"
+    "quizzes",
+    "highscores"
   ])
   .config([
     "$stateProvider",
@@ -44,8 +45,8 @@
     .state("quizHighscoreShow", {
       url: "/quiz/:_id/highscore",
       templateUrl: "js/quizzes/highscores/show.html",
-      controller: "QuizShowController",
-      controllerAs: "QuizHighscoreShowViewModel"
+      controller: "HighscoreShowController",
+      controllerAs: "HighscoreShowViewModel"
     })
     .state("quizShow", {
       url: "/quiz/:_id",

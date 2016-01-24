@@ -1,3 +1,4 @@
 <h2> You Have Selected - {{QuizShowViewModel.quizApi.name}}, {{QuizShowViewModel.quiz.quizTitle}} </h2>
-  <button data-ng-sref="">BACK To QUIZZES</button>
-  <button data-ng-sref="">PLAY QUIZ</button>
+  <button data-ui-sref="quizIndex">BACK To QUIZZES</button>
+  <button data-ui-sref="quizPlay({_id: QuizShowViewModel.quizApi._id})">PLAY QUIZ</button>
+  <button data-ui-sref="quizHighscoreShow({_id: QuizShowViewModel.quizApi._id})">HIGHSCORE</button>

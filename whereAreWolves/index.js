@@ -37,6 +37,8 @@ app.get("/", function(req, res){
   res.sendFile("index.html");
 });
 app.get("/quizzes", quizzesController.index);
+app.get("/highscores", quizzesController.allHighscores);
+
 app.post("/quizzes", quizzesController.create);
 app.get("/quizzes/:id", quizzesController.show);
 app.put("/quizzes/:id", quizzesController.update);
