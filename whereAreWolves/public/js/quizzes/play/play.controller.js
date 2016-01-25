@@ -3,14 +3,14 @@
 (function(){
   angular
   .module("quizzes")
-  .controller("PlayStartController", [
+  .controller("PlayController", [
     "HighscoreFactory",
     "$stateParams",
     "$http",
-    PlayStartControllerFunction
+    PlayControllerFunction
   ]);
 
-  function PlayStartControllerFunction(HighscoreFactory, $stateParams, $http){
+  function PlayControllerFunction(HighscoreFactory, $stateParams, $http){
     var self = this;
     this.quizHighscores = [];
     this.allHighscores = HighscoreFactory.query(function(data){

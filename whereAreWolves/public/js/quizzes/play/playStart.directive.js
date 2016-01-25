@@ -2,25 +2,25 @@
 
 (function(){
   angular
-  .module("play")
+  .module("quizzes")
   .directive("playForm", [
     "HighscoreFactory",
     "QuizFactory",
-    "$stateParams"
+    "$stateParams",
     "$state",
     PlayDirectiveFunction
   ]);
 
   function PlayDirectiveFunction(HighscoreFactory, QuizFactory, $stateParams, $state){
     return{
-      templateUrl: "js/quizzes/play/play.html",
+      templateUrl: "js/quizzes/play/_form.html",
       scope: {
-        play: "="
+        highscore: "="
       },
       link: function(scope){
         scope.create = function(){
           scope.grumble.$save(function(response){
-            $state.go("grumbleIndex", {}, {reload: true});
+            $state.go("highscoreIndex", {}, {reload: true});
           });
         }
         scope.update = function(){

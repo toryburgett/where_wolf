@@ -38,7 +38,8 @@
       controllerAs: "QuizIndexViewModel"
     })
     .state("quizPlay", {
-      url: "/quiz/:quizId/play/:_id",
+      url: "/quiz/:_id/play/:quizQuestion",
+      params: { },
       templateUrl: "js/quizzes/play/play.html",
       controller: "PlayController",
       controllerAs: "PlayViewModel"
