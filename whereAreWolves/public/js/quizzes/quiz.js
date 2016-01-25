@@ -3,6 +3,8 @@
 (function(){
   angular
   .module("quizzes", [
-    "ngResource"
+    "ngResource",
+    "highscores",
+    "play"
   ]);
 }());

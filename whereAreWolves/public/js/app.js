@@ -5,7 +5,8 @@
   .module("wherewolves", [
     "ui.router",
     "quizzes",
-    "highscores"
+    "highscores",
+    "play"
   ])
   .config([
     "$stateProvider",
@@ -37,10 +38,16 @@
       controllerAs: "QuizIndexViewModel"
     })
     .state("quizPlay", {
-      url: "/quiz/:_id/play",
+      url: "/quiz/:quizId/play/:_id",
       templateUrl: "js/quizzes/play/play.html",
-      controller: "QuizShowController",
-      controllerAs: "QuizPlayViewModel"
+      controller: "PlayController",
+      controllerAs: "PlayViewModel"
+    })
+    .state("quizPlay", {
+      url: "/quiz/:_id/play",
+      templateUrl: "js/quizzes/play/start.html",
+      controller: "PlayStartController",
+      controllerAs: "PlayStartViewModel"
     })
     .state("quizHighscoreShow", {
       url: "/quiz/:_id/highscore",
@@ -57,7 +64,7 @@
     .state("highscoreIndex", {
       url: "/highscore",
       templateUrl: "js/quizzes/highscores/index.html",
-      controller: "QuizIndexController",
+      controller: "HighscoreIndexController",
       controllerAs: "HighscoreIndexViewModel"
     });
   }

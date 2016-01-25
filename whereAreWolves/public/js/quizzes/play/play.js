@@ -2,8 +2,9 @@
 
 (function(){
   angular
-  .module("highscores", [
-    "quizzes",
+  .module("play", [
     "ngResource",
+    "quizzes",
+    "highscores"
   ]);
 }());
