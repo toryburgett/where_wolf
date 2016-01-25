@@ -39,13 +39,18 @@
     })
     .state("quizPlay", {
       url: "/quiz/:_id/play/:quizQuestion",
-      params: { },
       templateUrl: "js/quizzes/play/play.html",
       controller: "PlayController",
       controllerAs: "PlayViewModel"
     })
-    .state("quizPlay", {
+    .state("quizStart", {
       url: "/quiz/:_id/play",
+      templateUrl: "js/quizzes/play/start.html",
+      controller: "PlayStartController",
+      controllerAs: "PlayStartViewModel"
+    })
+    .state("quizStartAgain",{
+      url: "/quiz/:_id/play/",
       templateUrl: "js/quizzes/play/start.html",
       controller: "PlayStartController",
       controllerAs: "PlayStartViewModel"

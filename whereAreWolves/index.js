@@ -43,6 +43,12 @@ app.post("/quizzes", quizzesController.create);
 app.get("/quizzes/:id", quizzesController.show);
 app.put("/quizzes/:id", quizzesController.update);
 app.delete("/quizzes/:id", quizzesController.delete);
+
+app.post("/highscores", quizzesController.addToHighscore);
+app.get("/highscores/:id", quizzesController.showToHighscore);
+app.put("/highscores/:id", quizzesController.updateToHighscore);
+app.delete("/highscores/:id", quizzesController.removeToHighscore);
+
 app.get("/quizzes/:id/highscores/", quizzesController.getHighscores);
 app.post("/quizzes/:id/highscores", quizzesController.addHighscore);
 app.delete("/quizzes/:quizId/highscores/:id", quizzesController.removeHighscore);

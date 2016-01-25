@@ -4,18 +4,34 @@
   <meta charset="UTF-8">
   <title>Where?Wolves</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" media="screen,projection">
+
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <!-- Styles -->
-  <!-- <link rel="stylesheet" href="styles/css/styles.css"> -->
-    <link rel="stylesheet" href="styles/style.css">
+    <!-- materialize -->
+    <!-- Compiled and minified CSS -->
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"> -->
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <!-- icons -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- My styles -->
+    <link rel="stylesheet" href="styles/css/mat_styles.css">
+    <!-- <link rel="stylesheet" href="styles/css/styles.css"> -->
+    <!-- <link rel="stylesheet" href="styles/style.css"> -->
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
 
     <!-- Font Files -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'> -->
+
+
+
 
   <!-- Javascript Files -->
     <!-- Angular Resources -->
@@ -47,6 +63,7 @@
       <script src="js/quizzes/play/play.js"></script>
       <script src="js/quizzes/play/playStart.controller.js"></script>
       <script src="js/quizzes/play/playStart.directive.js"></script>
+      <script src="js/quizzes/play/play.controller.js"></script>
 
 
 
@@ -60,44 +77,47 @@
 
 <body>
 
-  <div class="main">
 
     <!-- **********  Navigation Heading   ******** -->
-    <div class="heading">
-      <header class="navigation" role="banner">
-        <div class="navigation-wrapper">
-          <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
-          <nav role="navigation">
-            <ul id="js-navigation-menu" class="navigation-menu show">
-              <li class="nav-link"><a data-ui-sref="welcomePage">HOME</a></li>
-              <li class="nav-link"><a data-ui-sref="quizIndex">QUIZZES</a></li>
-              <li class="nav-link"><a data-ui-sref="highscoreIndex">HIGHSCORES</a></li>
-              <li class="nav-link"><a data-ui-sref="aboutPage">ABOUT</a></li>
-              <li class="nav-link"><a data-ui-sref="contactPage">CONTACT</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <div class="hero">
-        <div class="hero-inner">
-          <div class="hero-copy">
-            <hr>
-            <h1 class="font-effect-anaglyph" data-ui-sref="welcomePage">WHERE?WOLF</h1>
-            <hr>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ***************************************** -->
+    <header>
 
-    <div data-ui-view></div>
+    <div class="header">
+    <nav>
+      <div class="nav-wrapper teal darken-3">
+        <a data-ui-sref="welcomePage" class="brand-logo">WHERE?WOLF</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li class="nav-link"><a data-ui-sref="welcomePage">HOME</a></li>
+          <li class="nav-link"><a data-ui-sref="quizIndex">QUIZZES</a></li>
+          <li class="nav-link"><a data-ui-sref="highscoreIndex">HIGHSCORES</a></li>
+          <li class="nav-link"><a data-ui-sref="aboutPage">ABOUT</a></li>
+          <li class="nav-link"><a data-ui-sref="contactPage">CONTACT</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li class="nav-link"><a data-ui-sref="welcomePage">HOME</a></li>
+          <li class="nav-link"><a data-ui-sref="quizIndex">QUIZZES</a></li>
+          <li class="nav-link"><a data-ui-sref="highscoreIndex">HIGHSCORES</a></li>
+          <li class="nav-link"><a data-ui-sref="aboutPage">ABOUT</a></li>
+          <li class="nav-link"><a data-ui-sref="contactPage">CONTACT</a></li>
+        </ul>
+      </div>
+    </nav>
+    </div>
+    </header>
+    <!-- ***************************************** -->
+    <main>
+      <div data-ui-view></div>
+    </main>
 
     <!-- **************  Footer  *************** -->
-    <div class="footing">
-      <p>&copy Tory Burgett, 2016</p>
-    </div>
+    <footer class="page-footer teal darken-4">
+      <div class="container">
+        <p class="grey-text text-lighten-4 center" href="#!">&copy Tory Burgett, 2016</p>
+      </div>
+    </footer>
     <!-- ***************************************** -->
 
-  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
+
 </body>
 </html>

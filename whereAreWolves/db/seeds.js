@@ -17,9 +17,13 @@ quiz1.save();
 var quiz1Id = quiz1._id;
 
 var highscore1 = new HighscoreModel({
-  score: 90,
+  score: 0,
   username: "player1",
-  quizId: quiz1Id
+  quizId: quiz1Id,
+  questionsAnswered: 3,
+  questionsTotal: 3,
+  questionsRight: 0,
+  questionsWrong: 3
 });
 highscore1.save();
 
@@ -35,9 +39,13 @@ quiz2.save();
 var quiz2Id = quiz2._id;
 
 var highscore2 = new HighscoreModel({
-  score: 90,
+  score: 1,
   username: "player2",
-  quizId: quiz2Id
+  quizId: quiz2Id,
+  questionsAnswered: 3,
+  questionsTotal: 3,
+  questionsRight: 3,
+  questionsWrong: 0
 });
 highscore2.save();
 

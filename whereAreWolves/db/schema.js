@@ -7,7 +7,11 @@ var Schema = mongoose.Schema,
 var HighscoreSchema = new Schema({
   score: Number,
   username: String,
-  quizId: String
+  quizId: String,
+  questionsAnswered: Number,
+  questionsTotal: Number,
+  questionsRight: Number,
+  questionsWrong: Number
 });
 
 var QuizSchema = new Schema({

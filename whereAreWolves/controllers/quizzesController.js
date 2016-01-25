@@ -10,7 +10,11 @@ var router = {
     });
   },
   create: function(req, res){
-    new QuizModel({name: req.body.name}).save(function(err, quiz){
+    new QuizModel({
+      name: req.body.name,
+      githubgist: req.body.githubgist,
+      highscores: []
+      }).save(function(err, quiz){
       res.json(quiz);
     });
   },
@@ -22,6 +26,8 @@ var router = {
   update: function(req,res){
     QuizModel.findById(req.params.id, function(err, quiz){
       quiz.name = req.body.name;
+      quiz.githubgist = req.body.githubgist;
+      quiz.highscores = req.body.highscores;
       quiz.save(function(err, quiz){
         res.json(quiz);
       });
@@ -29,6 +35,43 @@ var router = {
   },
   delete: function(req, res){
     QuizModel.remove({_id: req.params.id}, function(err){
+      res.json({success: true});
+    });
+  },
+  addToHighscore: function(req, res){
+    new HighscoreModel({
+      quizId: req.body.quizId,
+      questionsWrong: req.body.questionsWrong,
+      questionsRight: req.body.questionsRight,
+      questionsAnswered: req.body.questionsAnswered,
+      questionsTotal: req.body.questionsTotal,
+      username: req.body.username,
+      score: req.body.score
+    }).save(function(err, highscore){
+      res.json(highscore);
+    });
+  },
+  showToHighscore: function(req, res){
+    HighscoreModel.findById(req.params.id, function(err, highscore){
+      res.json(highscore);
+    });
+  },
+  updateToHighscore: function(req,res){
+    HighscoreModel.findById(req.params.id, function(err, highscore){
+      highscore.quizId = req.body.username;
+      highscore.questionsWrong = req.body.questionsWrong;
+      highscore.questionsRight = req.body.questionsRight;
+      highscore.questionsAnswered =  req.body.questionsAnswered;
+      highscore.questionsTotal = req.body.questionsTotal;
+      highscore.username =  req.body.username;
+      highscore.score = req.body.score;
+      quiz.save(function(err, highscore){
+        res.json(highscore);
+      });
+    });
+  },
+  removeToHighscore: function(req, res){
+    HighscoreModel.remove({_id: req.params.id}, function(err){
       res.json({success: true});
     });
   },

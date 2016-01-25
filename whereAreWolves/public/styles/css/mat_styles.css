@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: url(../images/globe/map-of-the-world-429784_1920.jpg), no-repeat scroll;
+
+  }
+
+  main {
+    flex: 1 0 auto;
+    /*background: url(../images/globe/map-of-the-world-429784_1920.jpg), no-repeat scroll;*/
+  }
+
+  .welcomeContent{
+    margin: 10vh 10vw 0px 10vw;
+    padding: 0px;
+    /*padding: 5px;*/
+  }
+  .welcomeContent .row{
+    padding: 0px;
+  }
+  .welcomeContent .col{
+    padding: 0px;
+  }
+
+  .welcomeTitle{
+    width: 100%;
+    padding: 0px;
+    height: 30vh;
+    background: url(../images/cool_wolf.jpg);
+    background-size: cover;
+    background-position: 50% 30%;
+    position: relative;
+    /*vertical-align: bottom;*/
+    color: white;
+  }
+  .welcomeTitle h5{
+    position: absolute;
+    bottom: 0px;
+  }

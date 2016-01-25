@@ -2,6 +2,10 @@ var Highscore = function(info){
   this.score = info.score;
   this.username = info.username;
   this.quizId = info.quizId;
+  this.questionsAnswered = info.questionsAnswered; 
+  this.questionsTotal = info.questionsTotal; 
+  this.questionsRight = info.questionsRight; 
+  this.questionsWrong = info.questionsWrong; 
   this._id = info._id;
 };
 

@@ -1,5 +1,19 @@
-<form>
-  <input placeholder="{{quiz._id}}" data-ng-model="highscore.quizId" />
-  <textarea placeholder="Grumble content" data-ng-model="grumble.content"></textarea>
+<div>
+  <p> test test test </p>
+
+
+  score: Number,
+  username: String,
+  quizId: String,
+  questionsAnswered: Number,
+  questionsTotal: Number,
+  questionsRight: Number,
+  questionsWrong: Number
+
+    <input type="text" placeholder="0" name="Score" data-ng-model="highscore.title" style="border: 1px solid black"><br>
+    <input type="text" placeholder="Username" name="username" data-ng-model="highscore.artist" style="border: 1px solid black"><br>
+    <input type="text" placeholder="Genre" name="genre" data-ng-model="highscore.genre" style="border: 1px solid black"><br>
+    <input type="text" placeholder="Album Art" name="album_art" data-ng-model="highscore.album_art" style="border: 1px solid black"><br>
+
   <button type="button" data-ng-click="create()">START</button>
-</form>
+</div>
