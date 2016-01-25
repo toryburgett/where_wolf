@@ -38,22 +38,10 @@
       controllerAs: "QuizIndexViewModel"
     })
     .state("quizPlay", {
-      url: "/quiz/:_id/play/:quizQuestion",
+      url: "/play/:_id",
       templateUrl: "js/quizzes/play/play.html",
       controller: "PlayController",
       controllerAs: "PlayViewModel"
-    })
-    .state("quizStart", {
-      url: "/quiz/:_id/play",
-      templateUrl: "js/quizzes/play/start.html",
-      controller: "PlayStartController",
-      controllerAs: "PlayStartViewModel"
-    })
-    .state("quizStartAgain",{
-      url: "/quiz/:_id/play/",
-      templateUrl: "js/quizzes/play/start.html",
-      controller: "PlayStartController",
-      controllerAs: "PlayStartViewModel"
     })
     .state("quizHighscoreShow", {
       url: "/quiz/:_id/highscore",

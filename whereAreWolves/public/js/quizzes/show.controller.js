@@ -14,6 +14,7 @@
   ]);
 
   function QuizShowControllerFunction(HighscoreFactory, QuizFactory, $scope, $stateParams, $state, $http){
+
     var self = this;
 
     this.quiz;
@@ -32,7 +33,7 @@
             questionsRight: 0,
             questionsAnswered: 0,
             questionsTotal: questionsTotal,
-            username: "username",
+            username: "Anonymous Quiz Player",
             score: 0
           });
 
@@ -43,7 +44,10 @@
               self.quizApi.$update({_id: $stateParams._id}, function(data){
                 console.log(self.quizApi);
               });
-              $state.go("highscoreIndex", {}, {reload: true});
+
+              console.log(self.highscore._id);
+
+              $state.go("quizPlay", {_id: self.highscore._id}, {reload: true});
             });
           };
           console.log(self.quiz);
