@@ -21,7 +21,7 @@
 
         <div class="optionArea" data-ng-repeat="quizOptions in PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].options">
 
-          <div class="option" id="option{{$index}}">
+          <div class="option" id="option{{$index}}" data-ng-click="PlayViewModel.selectAnswer($index)">
             <div class="optionTitle option{{$index}}">{{$index}} - {{quizOptions}}</div>
           </div>
         </div>
@@ -30,6 +30,13 @@
       <!-- Answer area -->
 
       <!-- User Tools -->
+
+
+      <!-- input username -->
+      <div data-ng-show="PlayViewModel.showUsername">
+          <input type="text-area" placeholder="Anonymous Player" name="username" style="border: 1px solid black"><br>
+      </div>
+
 
     </div>
   </div>

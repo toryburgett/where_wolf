@@ -58,7 +58,7 @@ var router = {
   },
   updateToHighscore: function(req,res){
     HighscoreModel.findById(req.params.id, function(err, highscore){
-      highscore.quizId = req.body.username;
+      highscore.quizId = req.body.quizId;
       highscore.questionsWrong = req.body.questionsWrong;
       highscore.questionsRight = req.body.questionsRight;
       highscore.questionsAnswered =  req.body.questionsAnswered;
