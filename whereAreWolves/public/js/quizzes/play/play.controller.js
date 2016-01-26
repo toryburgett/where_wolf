@@ -17,6 +17,7 @@
     var self = this;
     this.quiz;
     this.quizApi;
+    this.selectAnswerNumber = 5;
     // this.nextQuestion;
 
     this.highscore = HighscoreFactory.get({_id: $stateParams._id}, function(data){
@@ -35,11 +36,6 @@
 
     this.nextQuestion = function(){
       if(self.highscore.questionsAnswered == self.highscore.questionsTotal){
-        // Reached the end of the quiz, go to end page
-        // self.quizApi.highscores.push(self.highscore);
-        // self.quizApi.$update({_id: self.highscore.quizId}, function(data){
-        //   console.log(self.quizApi);
-        // });
         $state.go("highscoreIndex");
 
       }else{
@@ -47,11 +43,34 @@
         var num2 = num + 1;
         self.highscore.questionsAnswered = num2;
         self.highscore.$update({_id: $stateParams._id})
+        self.selectAnswerNumber = 5;
         console.log(self.highscore);
-        // $state.go("quizPlay", {_id: self.highscore._id}, {reload: true});
-
       }
     };
+
+    this.selectAnswer = function(number){
+      this.selectAnswerNumber = number;
+    }
+
+    this.checkAnswer = function(){
+      if (self.selectAnswerNumber == 5){
+        console.log("choose an answer");
+      }else{
+        var questionNumber = self.highscore.questionsAnswered;
+        if(self.selectAnswerNumber == self.quiz.quiz[questionNumber].correctAnswer){
+          var numright = self.highscore.questionsRight;
+          var numright2 = num + 1;
+          self.highscore.questionsRight = numright2;
+          self.highscore.$update({_id: $stateParams._id})
+        }else if (self.selectAnswerNumber !== self.quiz.quiz[questionNumber].correctAnswer) {
+          var numwrong = self.highscore.questionsWrong;
+          var numwrong2 = num + 1;
+          self.highscore.questionsWrong = numwrong2;
+          self.highscore.$update({_id: $stateParams._id})
+        }
+
+      }
+    }
 
 
   }

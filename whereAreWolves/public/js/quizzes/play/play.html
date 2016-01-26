@@ -5,27 +5,24 @@
     <div class="side-image-content">
       <button data-ng-click="PlayViewModel.nextQuestion()">NEXT</button>
 
+      <div>{{PlayViewModel.highscore.username}}, {{PlayViewModel.highscore.questionsAnswered}}</div>
+
+      <div>{{PlayViewModel.quiz.quizTitle}}</div>
+      <div></div>
+
 
       <!-- Question area -->
       <div class="questionOptionArea">
         <div class="questionArea">
-          <div class="qTitle">{{PlayViewModel.quiz.quiz[PlayViewModel.questionsAnswered].questionTitle}}</div>
-          <div class="qText"></div>
+          <div class="qTitle">{{PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].questionTitle}}</div>
+          <div class="qText">{{PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].questionText}}</div>
           <div class="qImage"></div>
         </div>
 
-        <div class="optionArea">
-          <div class="option" id="option0">
-            <div class="optionTitle option0"></div>
-          </div>
-          <div class="option" id="option1">
-            <div class="optionTitle option1"></div>
-          </div>
-          <div class="option" id="option2">
-            <div class="optionTitle option2"></div>
-          </div>
-          <div class="option" id="option3">
-            <div class="optionTitle option3"></div>
+        <div class="optionArea" data-ng-repeat="quizOptions in PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].options">
+
+          <div class="option" id="option{{$index}}">
+            <div class="optionTitle option{{$index}}">{{$index}} - {{quizOptions}}</div>
           </div>
         </div>
       </div>
