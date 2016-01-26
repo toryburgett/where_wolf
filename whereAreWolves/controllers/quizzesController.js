@@ -65,7 +65,7 @@ var router = {
       highscore.questionsTotal = req.body.questionsTotal;
       highscore.username =  req.body.username;
       highscore.score = req.body.score;
-      quiz.save(function(err, highscore){
+      highscore.save(function(err, highscore){
         res.json(highscore);
       });
     });

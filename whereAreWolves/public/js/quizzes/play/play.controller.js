@@ -17,32 +17,45 @@
     var self = this;
     this.quiz;
     this.quizApi;
+    // this.nextQuestion;
 
     this.highscore = HighscoreFactory.get({_id: $stateParams._id}, function(data){
-
+      self.quizApi = QuizFactory.get({_id: data.quizId}, function(quizApiData){
+        $http.get(quizApiData.githubgist)
+          .then(function(response){
+            self.quiz = response.data;
+            console.log(self.quiz);
+            console.log(self.quizApi);
+            console.log(self.highscore);
+          }, function(response){
+            console.log("Something went wrong"+response);
+          });
+      });
     });
 
+    this.nextQuestion = function(){
+      if(self.highscore.questionsAnswered == self.highscore.questionsTotal){
+        // Reached the end of the quiz, go to end page
+        $state.go("highscoreIndex");
 
-    // this.quizHighscores = [];
-    // this.allHighscores = HighscoreFactory.query(function(data){
-    //   for(var i = 0; i < data.length; i++){
-    //     if( data[i].quizId === $stateParams._id){
-    //       self.quizHighscores.push(data[i]);
-    //       console.log(self.quizHighscores);
-    //     }
-    //   }
-    //   console.log(data);
-    // });
-    //
-    // this.quiz;
-    // this.quizApi = QuizFactory.get({_id: $stateParams._id}, function(data){
-    //   $http.get(data.githubgist)
-    //     .then(function(response){
-    //       self.quiz = response.data;
-    //       console.log(self.quiz);
-    //     }, function(response){
-    //       console.log("Something went wrong, "+response);
-    //     });
-    // });
+      }else if((self.highscore.questionsAnswered)%2==0){
+        var num = self.highscore.questionsAnswered;
+        var num2 = num + 1;
+        self.highscore.questionsAnswered = num2;
+        self.highscore.$update({_id: $stateParams._id})
+        console.log(self.highscore);
+        $state.go("quizPlay", {_id: self.highscore._id}, {reload: true});
+      }else if((self.highscore.questionsAnswered)%2!==0){
+        var num = self.highscore.questionsAnswered;
+        var num2 = num + 1;
+        self.highscore.questionsAnswered = num2;
+        self.highscore.$update({_id: $stateParams._id})
+        console.log(self.highscore);
+        $state.go("quizPlaySecond", {_id: self.highscore._id}, {reload: true});
+      }
+
+    };
+
+
   }
 }());
