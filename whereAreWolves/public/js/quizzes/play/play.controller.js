@@ -36,24 +36,21 @@
     this.nextQuestion = function(){
       if(self.highscore.questionsAnswered == self.highscore.questionsTotal){
         // Reached the end of the quiz, go to end page
+        // self.quizApi.highscores.push(self.highscore);
+        // self.quizApi.$update({_id: self.highscore.quizId}, function(data){
+        //   console.log(self.quizApi);
+        // });
         $state.go("highscoreIndex");
 
-      }else if((self.highscore.questionsAnswered)%2==0){
+      }else{
         var num = self.highscore.questionsAnswered;
         var num2 = num + 1;
         self.highscore.questionsAnswered = num2;
         self.highscore.$update({_id: $stateParams._id})
         console.log(self.highscore);
-        $state.go("quizPlay", {_id: self.highscore._id}, {reload: true});
-      }else if((self.highscore.questionsAnswered)%2!==0){
-        var num = self.highscore.questionsAnswered;
-        var num2 = num + 1;
-        self.highscore.questionsAnswered = num2;
-        self.highscore.$update({_id: $stateParams._id})
-        console.log(self.highscore);
-        $state.go("quizPlaySecond", {_id: self.highscore._id}, {reload: true});
-      }
+        // $state.go("quizPlay", {_id: self.highscore._id}, {reload: true});
 
+      }
     };
 
 

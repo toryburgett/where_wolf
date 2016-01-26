@@ -40,11 +40,6 @@
           self.create = function(){
             self.highscore.$save(function(data){
               console.log(data);
-              self.quizApi.highscores.push(self.highscore);
-              self.quizApi.$update({_id: $stateParams._id}, function(data){
-                console.log(self.quizApi);
-              });
-
               console.log(self.highscore._id);
 
               $state.go("quizPlay", {_id: self.highscore._id}, {reload: true});
