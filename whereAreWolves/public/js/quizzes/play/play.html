@@ -3,12 +3,13 @@
   <div class="side-image">
     <div class="images-wrapper"></div>
     <div class="side-image-content">
-      <button data-ng-click="PlayViewModel.nextQuestion()">NEXT</button>
 
-      <div>{{PlayViewModel.highscore.username}}, {{PlayViewModel.highscore.questionsAnswered}}</div>
+
+      <div>{{PlayViewModel.quiz.quizTitle}}, {{PlayViewModel.highscore.questionsAnswered}}</div>
 
       <div>{{PlayViewModel.quiz.quizTitle}}</div>
       <div></div>
+
 
 
       <!-- Question area -->
@@ -19,17 +20,29 @@
           <div class="qImage"></div>
         </div>
 
-        <div class="optionArea" data-ng-repeat="quizOptions in PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].options">
+        <!-- Question area -->
+        <div class="row">
+          <div class="optionArea" data-ng-repeat="quizOptions in PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].options">
 
-          <div class="option" id="option{{$index}}" data-ng-click="PlayViewModel.selectAnswer($index)">
-            <div class="optionTitle option{{$index}}">{{$index}} - {{quizOptions}}</div>
+            <div data-ng-class="PlayViewModel.selectedColor($index)" id="option{{$index}}" data-ng-click="PlayViewModel.selectAnswer($index)">
+              <div class="card small sm-size">
+                <div class="card-image">
+                  <img src="../../../styles/images/black_wolf.jpg">
+                  <span class="card-title">Card Title</span>
+                </div>
+                <div data-ng-class="PlayViewModel.selectedColor($index)">
+                  <div class="card-content">
+                    <div class="optionTitle option{{$index}}"> {{quizOptions}} </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Answer area -->
 
-      <!-- User Tools -->
 
 
       <!-- input username -->
@@ -37,11 +50,10 @@
           <input type="text-area" placeholder="Anonymous Player" name="username" data-ng-model="PlayViewModel.highscore.username" style="border: 1px solid black"><br>
       </div>
 
+      <!-- User Tools -->
+      <button data-ng-click="PlayViewModel.nextQuestion()">NEXT</button>
 
     </div>
   </div>
 </div>
 <!-- ***************************************** -->
-
-
-<!-- End Score -->

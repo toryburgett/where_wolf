@@ -90,8 +90,19 @@
 
     this.selectAnswer = function(number){
       this.selectAnswerNumber = number;
+
       console.log(this.selectAnswerNumber);
     };
+
+    this.selectedColor = function(number){
+      if(self.selectAnswerNumber == number){
+        return "red";
+      }
+      else{
+        return "blue";
+      }
+    }
+
 
   }
 }());

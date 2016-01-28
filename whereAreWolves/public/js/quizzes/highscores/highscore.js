@@ -4,6 +4,7 @@
   angular
   .module("highscores", [
     "quizzes",
+    "play",
     "ngResource",
   ]);
 }());
