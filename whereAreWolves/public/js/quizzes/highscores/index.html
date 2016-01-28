@@ -1,7 +1,7 @@
 <p>All Highscores</p>
 
-<div data-ng-repeat="quiz in HighscoreIndexViewModel.quizHighscores | orderBy:'-created_at'">
-  <h2>Quiz: {{HighscoreIndexViewModel.quizzes[$index].name}}</h2>
+<div data-ng-repeat="quiz in HighscoreIndexViewModel.quizzes | orderBy:'-created_at'">
+  <h2>Quiz: {{quiz.name}}</h2>
   <div data-ng-repeat="highscore in quiz.highscores | orderBy:'-created_at'">
     <p>{{highscore.username}} , Score: {{highscore.score}}</a></p>
   </div>

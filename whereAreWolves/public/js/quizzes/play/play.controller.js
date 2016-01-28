@@ -38,23 +38,14 @@
 
     this.nextQuestion = function(){
       if(self.highscore.questionsAnswered == self.highscore.questionsTotal){
-        // //update score
-        // var numrightfinal = self.highscore.questionsAnswered;
-        // var numquestionstotal = self.highscore.questionsTotal;
-        // var scorefinal = (numrightfinal/numquestionstotal);
-        // self.highscore.score = scorefinal;
-        // console.log(scorefinal);
-
-        self.quiz.highscores.push(self.highscore);
-
-
+        console.log(self.quizApi);
+        self.quizApi.highscores.push(self.highscore);
         self.highscore.$update({_id: $stateParams._id});
-        self.quiz.$update({_id: self.highscore.quizId});
+        self.quizApi.$update({_id: self.highscore.quizId});
         console.log(self.highscore);
         $state.go("highscoreIndex");
 
       }else{
-
         // checkAnswer
         if (self.selectAnswerNumber == 5){
           console.log("choose an answer");
@@ -89,6 +80,7 @@
           //show username field if questionsAnswered == questionsTotal
           if(self.highscore.questionsAnswered == self.highscore.questionsTotal){
             self.showUsername = true;
+
           }
 
         }
