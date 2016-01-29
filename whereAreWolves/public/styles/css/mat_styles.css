@@ -177,7 +177,7 @@ body {
     padding: 0px;
     height: 30vh;
     background-size: cover;
-    background: url(../images/wolves2/blue_wolf_h.jpeg);
+    background: url(../images/wolves2/blue_wolf_h.jpeg) no-repeat;
     background-position: 50% 25%;
     position: relative;
   }
