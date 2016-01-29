@@ -9,7 +9,7 @@
   ]);
 
   function QuizFactoryFunction($resource){
-    return $resource("http://localhost:8080/quizzes/:_id", {}, {
+    return $resource("http://where-wolf.herokuapp.com/quizzes/:_id", {}, {
       update: {method: "PUT"}
     });
   }

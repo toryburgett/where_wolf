@@ -9,7 +9,7 @@
   ]);
 
   function HighscoreFactoryFunction($resource){
-    return $resource("http://localhost:8080/highscores/:_id", {}, {
+    return $resource("http://where-wolf.herokuapp.com/highscores/:_id", {}, {
       update: {method: "PUT"}
     });
   }
