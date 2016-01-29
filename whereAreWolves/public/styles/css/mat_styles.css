@@ -1,0 +1,200 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: url(../images/globe/map-of-the-world-429784_1920.jpg), no-repeat scroll;
+
+  }
+
+  main {
+    flex: 1 0 auto;
+    /*background: url(../images/globe/map-of-the-world-429784_1920.jpg), no-repeat scroll;*/
+  }
+
+  .welcomeContent{
+    margin: 10vh 10vw 0px 10vw;
+    padding: 0px;
+    /*padding: 5px;*/
+  }
+  .welcomeContent .row{
+    padding: 0px;
+  }
+  .welcomeContent .col{
+    padding: 0px;
+  }
+
+  .welcomeTitle{
+    width: 100%;
+    padding: 0px;
+    height: 30vh;
+    background: url(../images/cool_wolf.jpg);
+    background-size: cover;
+    background-position: 50% 30%;
+    position: relative;
+    /*vertical-align: bottom;*/
+    color: white;
+  }
+  .welcomeTitle h5{
+    position: absolute;
+    bottom: 0px;
+  }
+
+
+
+  .quizOptionButton{
+    margin: 4vh 1vw;
+    width: 23vw;
+    display: block;
+    float: left;
+  }
+
+  .nextButton{
+    margin: 0 auto;
+    display: block;
+    border: none;
+    color: white;
+    background-color: teal;
+    padding: 10px 20px;
+  }
+
+  .selectAnswer{
+    margin: 0 auto;
+    display: block;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    width: 80vw
+
+  }
+
+  .clearfix:after {
+     content: " "; /* Older browser do not support empty content */
+     visibility: hidden;
+     display: block;
+     height: 0;
+     clear: both;
+  }
+
+  .questionTitle{
+    /*color: slate;*/
+    font-size: 1.5em;
+    color: white;
+    margin-right: 4px;
+
+  }
+  .questionText{
+    font-size: 1.4em;
+  }
+
+  .questionContent{
+    margin: 5vw 5vw 0vw 5vw;
+    width: 90vw;
+    background-color: rgba(225, 225, 225, 0.5);
+  }
+  .questionWords{
+    padding: 4px;
+  }
+  /*.questionImage{
+    position: relative;
+    height: 300px;
+    width: 100%
+  }
+
+  .questionImage img{
+    max-width:100%;
+    max-height:100%;
+  }*/
+
+
+  .questionWords{
+
+  }
+
+  .userTools{
+    height: 10vh;
+  }
+
+  .optionArea{
+    height: 20vh;
+  }
+
+  .quizChoices{
+    margin: 2px;
+  }
+
+  .quizIndex{
+    width: 100%;
+    padding: 0px;
+    height: 30vh;
+    background: url(../images/sonw_wolf.jpg);
+    background-size: cover;
+    background-position: 50% 40%;
+    position: relative;
+  }
+
+  .highscoreIndex{
+    width: 100%;
+    padding: 0px;
+    height: 30vh;
+    background: url(../images/sleepy_wolf.jpg);
+    background-size: cover;
+    background-position: 50% 60%;
+    position: relative;
+  }
+  .highscoreIndex h5{
+    position: absolute;
+    bottom: 0px;
+  }
+
+
+  .quizShow{
+    width: 100%;
+    padding: 0px;
+    height: 30vh;
+    background-size: cover;
+    background-position: 50% 40%;
+    position: relative;
+  }
+
+  .aboutShow{
+    width: 100%;
+    padding: 0px;
+    height: 30vh;
+    background-size: cover;
+    background: url(../images/wolves2/green_wolf_h.jpeg);
+    background-position: 50% 3%;
+    /*background-position: 80% 40%;*/
+    position: relative;
+  }
+  .aboutShow h5{
+    position: absolute;
+    bottom: 0px;
+    color: white;
+  }
+
+  .contactShow{
+    width: 100%;
+    padding: 0px;
+    height: 30vh;
+    background-size: cover;
+    background: url(../images/wolves2/blue_wolf_h.jpeg);
+    background-position: 50% 25%;
+    position: relative;
+  }
+  .contactShow h5{
+    position: absolute;
+    bottom: 0px;
+    color: white;
+  }
+
+  .why{
+    border-right: 1px solid grey;
+  }
+
+  .aboutText{
+    border-bottom: 1px solid grey;
+    margin: 0px 30px;
+  }
+  .aboutContent{
+    margin: 0px 30px;
+  }
