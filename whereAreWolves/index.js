@@ -13,7 +13,6 @@ var path           = require("path");
 var fs             = require('fs');
 
 var quizzesController = require("./controllers/quizzesController");
-mongoose.createConnection('mongodb://localhost/wherewolves');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -28,9 +27,6 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(flash());
-
-// Routes for db
-// app.use("/quizzes", require("./controllers/quizzesController"));
 
 
 app.get("/", function(req, res){
