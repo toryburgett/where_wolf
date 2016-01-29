@@ -11,7 +11,7 @@ HighscoreModel.remove({}, function(err){
 // One Quiz, One Highscore
 var quiz1 = new QuizModel({
   name: "First Quiz",
-  githubgist: "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/6f2e585b33cc93ffffadbc28888a9e0a5ae9d634/quiz.json",
+  githubgist: "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/f1e2067d1c79df0a0b9b6771f5e8c7ae1847719d/quiz.json",
 });
 quiz1.save();
 var quiz1Id = quiz1._id;

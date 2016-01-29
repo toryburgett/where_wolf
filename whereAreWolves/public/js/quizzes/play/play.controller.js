@@ -20,6 +20,7 @@
     this.quizApi;
     this.selectAnswerNumber = 5;
     this.showUsername = false;
+    this.showWarn = false;
 
     this.highscore = HighscoreFactory.get({_id: $stateParams._id}, function(data){
       self.quizId = data.quizId;
@@ -38,18 +39,23 @@
 
     this.nextQuestion = function(){
       if(self.highscore.questionsAnswered == self.highscore.questionsTotal){
+        self.showWarn = false;
         console.log(self.quizApi);
         self.quizApi.highscores.push(self.highscore);
         self.highscore.$update({_id: $stateParams._id});
-        self.quizApi.$update({_id: self.highscore.quizId});
-        console.log(self.highscore);
-        $state.go("highscoreIndex");
+        self.quizApi.$update({_id: self.highscore.quizId}, function(){
+          console.log(self.highscore);
+          $state.go("highscoreIndex", {}, { reload: true });
+        });
+
 
       }else{
         // checkAnswer
         if (self.selectAnswerNumber == 5){
           console.log("choose an answer");
+          self.showWarn = true;
         }else{
+          self.showWarn = false;
           var questionNumber = self.highscore.questionsAnswered;
           if(self.selectAnswerNumber == self.quiz.quiz[questionNumber].correctAnswer){
             var numright = self.highscore.questionsRight;
@@ -96,12 +102,14 @@
 
     this.selectedColor = function(number){
       if(self.selectAnswerNumber == number){
-        return "red";
+        return "deep-orange";
       }
       else{
-        return "blue";
+        return "teal";
       }
     }
+
+
 
 
   }

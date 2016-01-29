@@ -1,8 +1,20 @@
-<p>All Highscores</p>
+<div class="content welcomeContent">
+  <div class="row center">
+    <div class="col s12 white center">
 
-<div data-ng-repeat="quiz in HighscoreIndexViewModel.quizzes | orderBy:'-created_at'">
-  <h2>Quiz: {{quiz.name}}</h2>
-  <div data-ng-repeat="highscore in quiz.highscores | orderBy:'-questionsRight'">
-    <p>{{highscore.username}} - Score: {{((highscore.questionsRight / highscore.questionsTotal)*100).toFixed(2)}}</a></p>
+      <div class="highscoreIndex">
+        <h5 class="light teal"> HIGHSCORES </h5>
+      </div>
+
+      <div class="row">
+        <div data-ng-repeat="quiz in HighscoreIndexViewModel.quizzes |   orderBy:'-created_at'" class="col s{{12/(HighscoreIndexViewModel.quizzes.length)}}">
+          <h5>Quiz: {{quiz.name}}</h5>
+          <div data-ng-repeat="highscore in quiz.highscores | orderBy:'-questionsRight'">
+            <p>{{highscore.username}} - Score: {{((highscore.questionsRight / highscore.questionsTotal)*100).toFixed(2)}}</a></p>
+          </div>
+        </div>
+      </div>
+      <br><br>
+    </div>
   </div>
 </div>
