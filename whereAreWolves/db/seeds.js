@@ -33,7 +33,7 @@ quiz1.save();
 // One Quiz, One Highscore
 var quiz2 = new QuizModel({
   name: "Wolves in Mythology",
-  githubgist: "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/3adae82b8f32d70daeec6cc16d490898c196840a/quiz.json",
+  githubgist: "https://gist.githubusercontent.com/toryburgett/ea4a1fbce9e53f18b0f2/raw/1331b1049e46d7d932b44549543643efd6332a0f/history.json",
 });
 quiz2.save();
 var quiz2Id = quiz2._id;
