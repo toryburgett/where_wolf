@@ -33,7 +33,7 @@ quiz1.save();
 // One Quiz, One Highscore
 var quiz2 = new QuizModel({
   name: "Second Quiz",
-  githubgist: "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/cd36ff186b123f56397fcf9d71857f02c89b678f/quiz.json",
+  githubgist: "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/3adae82b8f32d70daeec6cc16d490898c196840a/quiz.json",
 });
 quiz2.save();
 var quiz2Id = quiz2._id;
