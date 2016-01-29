@@ -10,15 +10,15 @@ HighscoreModel.remove({}, function(err){
 
 // One Quiz, One Highscore
 var quiz1 = new QuizModel({
-  name: "First Quiz",
-  githubgist: "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/cd36ff186b123f56397fcf9d71857f02c89b678f/quiz.json",
+  name: "Wolves in Literature",
+  githubgist: "https://gist.githubusercontent.com/toryburgett/7b93b75dab7ec6c75fed/raw/d7d6f463a1d8ee2eaa4de2a772e1f523450c9698/story.json",
 });
 quiz1.save();
 var quiz1Id = quiz1._id;
 
 var highscore1 = new HighscoreModel({
   score: 0,
-  username: "player1",
+  username: "Mr. Big Bad",
   quizId: quiz1Id,
   questionsAnswered: 3,
   questionsTotal: 3,
@@ -32,7 +32,7 @@ quiz1.save();
 
 // One Quiz, One Highscore
 var quiz2 = new QuizModel({
-  name: "Second Quiz",
+  name: "Wolves in Mythology",
   githubgist: "https://gist.githubusercontent.com/toryburgett/71493221c7927a506592/raw/3adae82b8f32d70daeec6cc16d490898c196840a/quiz.json",
 });
 quiz2.save();
@@ -40,7 +40,7 @@ var quiz2Id = quiz2._id;
 
 var highscore2 = new HighscoreModel({
   score: 1,
-  username: "player2",
+  username: "Prof. Lupin",
   quizId: quiz2Id,
   questionsAnswered: 3,
   questionsTotal: 3,

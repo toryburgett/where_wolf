@@ -2,7 +2,7 @@
   <div class="row center">
     <div class="col s12 white center">
 
-      <div class="quizShow" style="background: url('{{QuizShowViewModel.quiz.quizImage}}')"></div>
+      <div class="quizShow" style="background: url('{{QuizShowViewModel.quiz.quizImage}}'); background-position: 50% 25%;"></div>
       <h4>{{QuizShowViewModel.quizApi.name}}, {{QuizShowViewModel.quiz.quizTitle}}</h4>
       <a data-ui-sref="quizIndex" class="btn-large waves-effect waves-light teal hoverable quizChoices"><i class="fa fa-hand-o-left"></i> BACK To QUIZZES</a><a data-ng-click="QuizShowViewModel.create()" class="btn-large waves-effect waves-light teal hoverable quizChoices"> <i class="fa fa-paw"></i>  START GAME</a>
       <br><br>
