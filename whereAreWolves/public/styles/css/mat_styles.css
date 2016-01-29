@@ -161,8 +161,8 @@ body {
     padding: 0px;
     height: 30vh;
     background-size: cover;
-    background: url(../images/horizontal_wolf.jpeg);
-    background-position: 10% 90%;
+    background: url(../images/wolves2/green_wolf_h.jpeg);
+    background-position: 50% 3%;
     /*background-position: 80% 40%;*/
     position: relative;
   }
@@ -177,8 +177,8 @@ body {
     padding: 0px;
     height: 30vh;
     background-size: cover;
-    background: url(../images/sleepy_wolf.jpg);
-    background-position: 50% 40%;
+    background: url(../images/wolves2/blue_wolf_h.jpeg);
+    background-position: 50% 25%;
     position: relative;
   }
   .contactShow h5{
