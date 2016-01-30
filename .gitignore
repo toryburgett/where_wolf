@@ -1,0 +1,4 @@
+node_modules
+drafts
+.DS_Store
+env.js
