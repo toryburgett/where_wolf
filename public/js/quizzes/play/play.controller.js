@@ -37,8 +37,7 @@
     this.nextQuestion = function(){
       if(self.highscore.questionsAnswered == self.highscore.questionsTotal){
         self.showWarn = false;
-        if(self.highscore.username){
-        }else{
+        if(!(self.highscore.username)){
           self.highscore.username = "Anonymous Player";
         }
         self.quizApi.highscores.push(self.highscore);
