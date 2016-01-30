@@ -39,15 +39,23 @@ body {
     bottom: 0px;
   }
 
-
-
-  .quizOptionButton{
-    margin: 4vh 1vw;
-    width: 23vw;
-    display: block;
-    float: left;
+  @media(max-width: 850px){
+    .quizOptionButton{
+      margin: 1vh 1vw;
+      width: 46vw;
+      min-width: 191px;
+      display: block;
+      float: left;
+    }
   }
-
+  @media(min-width: 851px){
+    .quizOptionButton{
+      margin: 4vh 1vw;
+      width: 23vw;
+      display: block;
+      float: left;
+    }
+  }
   .nextButton{
     margin: 0 auto;
     display: block;
@@ -63,7 +71,7 @@ body {
     border: none;
     color: white;
     padding: 10px 20px;
-    width: 80vw
+    width: 80vw;
 
   }
 
@@ -93,21 +101,6 @@ body {
   }
   .questionWords{
     padding: 4px;
-  }
-  /*.questionImage{
-    position: relative;
-    height: 300px;
-    width: 100%
-  }
-
-  .questionImage img{
-    max-width:100%;
-    max-height:100%;
-  }*/
-
-
-  .questionWords{
-
   }
 
   .userTools{

@@ -1,32 +1,46 @@
 
 <div class="row">
   <div class="z-depth-3 questionContent card small">
+
     <div class="questionImage card-image">
       <img src="{{PlayViewModel.quiz.quizImage}}" style=" background-position: 70% 40%; background-size: 90%">
       <span class="card-title teal">{{PlayViewModel.quizApi.name}}</span>
     </div>
-    <div class="questionWords">
-      <span class="questionTitle grey darken-2">{{PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].questionTitle}} </span>
-      <span class="questionText">  {{PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].questionText}}</span>
-      <div data-ng-show="PlayViewModel.showUsername">
-        Choose your username: <input type="text-area" placeholder="Anonymous Player" name="username" data-ng-model="PlayViewModel.highscore.username" style="border: 1px solid black"><br>
-      </div>
 
+    <div data-ng-hide="PlayViewModel.showUsername">
+      <div class="questionWords">
+        <span class="questionTitle grey darken-2">{{PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].questionTitle}} </span>
+        <span class="questionText">  {{PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].questionText}}</span>
+      </div>
     </div>
+
+    <div class="center-align" data-ng-show="PlayViewModel.showUsername">
+        <div class="row">
+          <h5>You answered {{PlayViewModel.highscore.questionsRight}} out of {{PlayViewModel.highscore.questionsTotal}} questions correctly.</h5>
+        </div>
+        <div class="row">
+          Choose your username: <input type="text-area" placeholder="Anonymous Player" name="username" data-ng-model="PlayViewModel.highscore.username" style="border: 1px solid black"><br>
+        </div>
+    </div>
+
   </div>
 </div>
 
 <div class="clearfix optionArea">
-  <div data-ng-repeat="quizOptions in PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].options">
-    <button class="waves-effect waves-light btn-large quizOptionButton hoverable" data-ng-class="PlayViewModel.selectedColor($index)" id="option{{$index}}" data-ng-click="PlayViewModel.selectAnswer($index)">
-      {{quizOptions}}
-    </button>
+  <div class="row">
+    <div data-ng-repeat="quizOptions in PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].options">
+      <button class="waves-effect waves-light btn-large quizOptionButton hoverable" data-ng-class="PlayViewModel.selectedColor($index)" id="option{{$index}}" data-ng-click="PlayViewModel.selectAnswer($index)">
+        {{quizOptions}}
+      </button>
+    </div>
   </div>
 </div>
 
-<div class="row userTools">
-  <div class="selectAnswer deep-orange center-align" data-ng-show="PlayViewModel.showWarn">Please select an answer</div>
-  <button class="nextButton hoverable" data-ng-click="PlayViewModel.nextQuestion()">NEXT</button>
-</div>
-
+<div class="row">
+  <div class="col s12">
+    <div class="row userTools">
+      <div class="selectAnswer deep-orange center-align" data-ng-show="PlayViewModel.showWarn">Please select an answer</div>
+      <button class="nextButton hoverable" data-ng-click="PlayViewModel.nextQuestion()">NEXT</button>
+    </div>
+  </div>
 </div>
