@@ -1,14 +1,10 @@
 <div class="content welcomeContent">
   <div class="row center">
     <div class="col s12 white center">
-
-
       <h4>Select a Quiz</h4>
       <div data-ng-repeat="quizApi in QuizIndexViewModel.quizzesApi | orderBy:'-created_at'"><a data-ui-sref="quizShow({_id: quizApi._id})" id="download-button" class="btn-large waves-effect waves-light teal hoverable quizChoices">{{quizApi.name}} , {{QuizIndexViewModel.quizzesData[$index].quizTitle}}</a></div>
       <br><br>
       <div class="quizIndex"></div>
-
-
     </div>
   </div>
 </div>

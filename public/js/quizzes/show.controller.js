@@ -39,13 +39,9 @@
 
           self.create = function(){
             self.highscore.$save(function(data){
-              console.log(data);
-              console.log(self.highscore._id);
-
               $state.go("quizPlay", {_id: self.highscore._id}, {reload: true});
             });
           };
-          console.log(self.quiz);
         }, function(response){
           console.log("Something went wrong, "+response);
         });

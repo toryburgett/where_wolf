@@ -16,7 +16,6 @@
     this.quizIds = [];
     this.quizzes = QuizFactory.query(function(quizData){
       self.allHighscores = HighscoreFactory.query();
-      console.log(self.quizzes);
     });
 
   }

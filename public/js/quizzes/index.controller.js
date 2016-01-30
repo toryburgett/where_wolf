@@ -17,12 +17,9 @@
         $http.get(data[i].githubgist)
           .then(function(response) {
             self.quizzesData.push(response.data);
-            console.log(self.quizzesData);
           }, function(response) {
-            console.log("error in http get"+response);
           });
       }
-      console.log(self.quizzesApi);
     });
   }
 }());
