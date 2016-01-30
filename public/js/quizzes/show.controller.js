@@ -33,7 +33,7 @@
             questionsRight: 0,
             questionsAnswered: 0,
             questionsTotal: questionsTotal,
-            username: "Anonymous Quiz Player",
+            // username: "Anonymous Quiz Player",
             score: 0
           });
 

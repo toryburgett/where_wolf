@@ -42,8 +42,8 @@ var highscore2 = new HighscoreModel({
   score: 1,
   username: "Prof. Lupin",
   quizId: quiz2Id,
-  questionsAnswered: 3,
-  questionsTotal: 3,
+  questionsAnswered: 5,
+  questionsTotal: 5,
   questionsRight: 3,
   questionsWrong: 0
 });

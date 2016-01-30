@@ -37,6 +37,10 @@
     this.nextQuestion = function(){
       if(self.highscore.questionsAnswered == self.highscore.questionsTotal){
         self.showWarn = false;
+        if(self.highscore.username){
+        }else{
+          self.highscore.username = "Anonymous Player";
+        }
         self.quizApi.highscores.push(self.highscore);
         self.highscore.$update({_id: $stateParams._id});
         self.quizApi.$update({_id: self.highscore.quizId}, function(){
