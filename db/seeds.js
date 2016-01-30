@@ -11,7 +11,7 @@ HighscoreModel.remove({}, function(err){
 // One Quiz, One Highscore
 var quiz1 = new QuizModel({
   name: "Wolves in Literature",
-  githubgist: "https://gist.githubusercontent.com/toryburgett/7b93b75dab7ec6c75fed/raw/d7d6f463a1d8ee2eaa4de2a772e1f523450c9698/story.json",
+  githubgist: "https://gist.githubusercontent.com/toryburgett/7b93b75dab7ec6c75fed/raw/d53750e3beadcb2c34c4c66be124da0fbfa94899/story.json",
 });
 quiz1.save();
 var quiz1Id = quiz1._id;
@@ -33,7 +33,7 @@ quiz1.save();
 // One Quiz, One Highscore
 var quiz2 = new QuizModel({
   name: "Wolves in Mythology",
-  githubgist: "https://gist.githubusercontent.com/toryburgett/ea4a1fbce9e53f18b0f2/raw/4d5f2071807846c976d9f42f3c0d3a25523a8a86/history.json",
+  githubgist: "https://gist.githubusercontent.com/toryburgett/ea4a1fbce9e53f18b0f2/raw/7c462d86bb7f1515e19c2ced96565dd7533c083d/history.json",
 });
 quiz2.save();
 var quiz2Id = quiz2._id;
