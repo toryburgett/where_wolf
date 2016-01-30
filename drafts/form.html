@@ -1,0 +1,9 @@
+<form>
+  <input placeholder="Title" data-ng-model="quiz.title" />
+  <input placeholder="Link to JSON File" data-ng-model="quiz.qithubgist" />
+  <button type="button" data-ng-if="!quiz.id" data-ng-click="create()">Create</button>
+  <div data-ng-if="quiz.id">
+    <button type="button" data-ng-click="update()">Update</button>
+    <button type="button" data-ng-click="delete()">Delete</button>
+  </div>
+</form>

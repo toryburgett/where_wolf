@@ -1,0 +1,15 @@
+<h2>{{QuizShowViewModel.quiz.name}}</h2>
+<p><dfn>Created:</dfn> {{QuizShowViewModel.quiz.created_at}}</p>
+<blockquote>{{QuizShowViewModel.quiz.githubgist}}</blockquote>
+
+<div>
+  <p>{{QuizShowViewModel.quizUrlData[0].quizTitle}} Hello! </p>
+  <div data-ng-repeat="quizUrlInfo in QuizShowViewModel.quizUrlData[0].quiz">
+    <p>{{quizUrlInfo.questionTitle}}</p>
+    <p>{{quizUrlInfo.questionText}}</p>
+    <p>{{quizUrlInfo.correctAnswer}}</p>
+    <p>{{quizUrlInfo.answerExplained}}</p>
+    <div data-ng-repeat="quizUrlInfoOptions in quizUrlInfo.options">
+      <p>{{quizUrlInfoOptions}}</p>
+  </div>
+</div>

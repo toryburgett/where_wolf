@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Where?Wolves</title>
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <!-- Styles -->
+  <!-- <link rel="stylesheet" href="styles/css/styles.css"> -->
+  <link rel="stylesheet" href="styles/style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Font Files -->
+  <!-- <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'> -->
+
+  <!-- Javascript Files -->
+  <!-- Angular Resources -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
+
+  <!-- Vanilla-ish App -->
+  <script src="script/scripts.js"></script>
+  <script src="script/nav.js"></script>
+
+
+
+  <!-- Angular Files -->
+  <script src="js/app.js"></script>
+  <script src="js/quizzes/quizzes.js"></script>
+  <script src="js/quizzes/index.controller.js"></script>
+  <script src="js/quizzes/quiz.factory.js"></script>
+  <script src="js/quizzes/show.controller.js"></script>
+  <script src="js/quizzes/form.directive.js"></script>
+
+  <script src="js/quizzes/quizUrl.factory.js"></script>
+
+
+</head>
+
+<body>
+
+  <div class="main">
+
+
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- **********  Navigation Heading   ******** -->
+    <div class="heading">
+      <header class="navigation" role="banner">
+        <div class="navigation-wrapper">
+          <a href="javascript:void(0" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+          <nav role="navigation">
+            <ul id="js-navigation-menu" class="navigation-menu show">
+              <li class="nav-link"><a href="#">QUIZZES</a></li>
+              <li class="nav-link"><a href="#">ABOUT</a></li>
+              <li class="nav-link"><a href="#">CONTACT</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <div class="hero">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <hr>
+            <h1 class="font-effect-anaglyph">WHERE?WOLF</h1>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+
+
+
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- ************** Welcome Page ************** -->
+    <div class="content" id="welcomeIndex">
+      <div class="side-image">
+        <div class="images-wrapper"></div>
+        <div class="side-image-content">
+          <h1>Quizzes About The Location of Wolves</h1>
+          <p>Play my quiz about the location of wolves.</p>
+          <p>Howl you do? Only one way to find out...</p>
+          <div class="startQuiz">
+            <button id="playQuiz">PLAY</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+
+
+
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- **************  Quiz View  ************** -->
+    <div class="content" id="quizGame">
+      <div class="side-image">
+        <div class="images-wrapper"></div>
+        <div class="side-image-content">
+
+          <!-- ************************************* -->
+          <!-- ******** Question Section *********** -->
+          <div class="questionOptionArea">
+            <div class="questionArea">
+              <div class="qTitle"></div>
+              <div class="qText"></div>
+              <div class="qImage"></div>
+            </div>
+
+            <div class="optionArea">
+              <div class="option" id="option0">
+                <div class="optionTitle option0"></div>
+              </div>
+              <div class="option" id="option1">
+                <div class="optionTitle option1"></div>
+              </div>
+              <div class="option" id="option2">
+                <div class="optionTitle option2"></div>
+              </div>
+              <div class="option" id="option3">
+                <div class="optionTitle option3"></div>
+              </div>
+            </div>
+          </div>
+          <!-- ************************************** -->
+          <!-- ************************************** -->
+
+          <!-- ************************************* -->
+          <!-- ******** Answer Section ************* -->
+          <div class="answerArea">
+            <div class="answerExplanation"></div>
+          </div>
+          <!-- ************************************** -->
+          <!-- ************************************** -->
+
+          <!-- ************************************** -->
+          <!-- *********** USER TOOLS *************** -->
+          <div class="submitArea">
+            <p id="wait">Please select an answer before submitting</p>
+            <button id="submit">submit</button>
+            <button id="next">NEXT</button>
+          </div>
+
+          <div class="quizProgress">
+            <p>QUIZ COMPLETION</p>
+            <div class="progressArea">
+              <div class="progress" id="progressDone"></div><div class="progress" id="progressToGo"></div>
+            </div>
+          </div>
+          <!-- ************************************** -->
+          <!-- ************************************** -->
+
+        </div>
+      </div>
+    </div>
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+
+
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- **************  End Score *************** -->
+    <div class="content" id="quizScore">
+      <div class="side-image">
+        <div class="images-wrapper"></div>
+        <div class="side-image-content">
+          <h1>Thanks for playing!</h1>
+          <p class="score"></p>
+          <div class="submitArea">
+            <p id="homeMenu">Return to Home</p>
+            <button id="home">HOME</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- **************  Footer  *************** -->
+    <div class="footing">
+      <p>&copy Tory Burgett, 2016</p>
+    </div>
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+    <!-- ***************************************** -->
+
+  </div>
+</body>
+</html>
