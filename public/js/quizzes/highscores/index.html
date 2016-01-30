@@ -9,7 +9,7 @@
       <div class="row">
         <div data-ng-repeat="quiz in HighscoreIndexViewModel.quizzes |   orderBy:'-created_at'" class="col s{{12/(HighscoreIndexViewModel.quizzes.length)}}">
           <h5>Quiz: {{quiz.name}}</h5>
-          <div data-ng-repeat="highscore in quiz.highscores | orderBy:'-questionsRight'">
+          <div data-ng-repeat="highscore in quiz.highscores | orderBy:'questionsRight' | limitTo:-5 | orderBy:'-questionsRight'">
             <p>{{highscore.username}} - Score: {{((highscore.questionsRight / highscore.questionsTotal)*100).toFixed(2)}} %</a></p>
           </div>
         </div>
