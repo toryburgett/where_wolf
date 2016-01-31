@@ -19,18 +19,26 @@
     .state("welcomePage", {
       url: "",
       templateUrl: "js/siteInfo/welcome.html",
+      controller: "QuizIndexController",
+      controllerAs: "QuizIndexViewModel"
     })
     .state("welcomePageAgain", {
       url: "/",
       templateUrl: "js/siteInfo/welcome.html",
+      controller: "QuizIndexController",
+      controllerAs: "QuizIndexViewModel"
     })
     .state("aboutPage", {
       url: "/about",
       templateUrl: "js/siteInfo/about.html",
+      controller: "QuizIndexController",
+      controllerAs: "QuizIndexViewModel"
     })
     .state("contactPage", {
       url: "/contact",
       templateUrl: "js/siteInfo/contact.html",
+      controller: "QuizIndexController",
+      controllerAs: "QuizIndexViewModel"
     })
     .state("quizIndex", {
       url: "/quiz",

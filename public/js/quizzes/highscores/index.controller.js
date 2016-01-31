@@ -18,6 +18,9 @@
     this.quizHighscores = [];
     this.quizIds = [];
     this.showRestHigh = false;
+    this.quizzesData = [];
+
+
     this.selectedHighScore = function(num){
       if(num === $stateParams._id){
         return "teal lighten-4";
@@ -25,6 +28,10 @@
     };
 
     this.quizzes = QuizFactory.query(function(quizData){
+
+
+
+
       self.allHighscores = HighscoreFactory.query(function(){
         if($stateParams._id){
           self.showRestHigh = true;
@@ -32,6 +39,18 @@
           $anchorScroll();
         }
       });
+
+      for(var i=0; i < data.length; i++){
+        $http.get(quizData[i].githubgist)
+          .then(function(response) {
+            self.quizzesData.push(response.data);
+          }, function() {
+          });
+      }
+
+
+
+
     });
 
     this.showAll = function(){

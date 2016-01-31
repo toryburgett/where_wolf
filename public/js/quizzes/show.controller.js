@@ -47,5 +47,7 @@
         });
     });
 
+    this.highscores = HighscoreFactory.query();
+
   }
 }());
