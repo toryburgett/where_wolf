@@ -11,16 +11,18 @@
           <h5>Quiz: {{quiz.name}}</h5>
           <div class="highestHighscores">
             <div data-ng-repeat="highscore in quiz.highscores | orderBy:'questionsRight' | limitTo:-5 | orderBy:'-questionsRight'">
-              <a name={{highscore._id}}>
-                <p>{{$index+1}} {{highscore.username}} - Score: {{((highscore.questionsRight / highscore.questionsTotal)*100).toFixed(2)}} %</p>
+              <a id="{{highscore._id}}">
+                <p data-ng-class="HighscoreIndexViewModel.selectedHighScore(highscore._id)">{{$index+1}} {{highscore.username}} - Score: {{((highscore.questionsRight / highscore.questionsTotal)*100).toFixed(2)}} %</p>
               </a>
             </div>
           </div>
-          <div class="theRestHighscores">
-            <div data-ng-repeat="highscore in quiz.highscores | orderBy:'questionsRight' | limitTo:(quiz.highscores.length-5):5 | orderBy:'-questionsRight'">
-              <a name={{highscore._id}}>
-                  <p>{{$index+5}} {{highscore.username}} - Score: {{((highscore.questionsRight / highscore.questionsTotal)*100).toFixed(2)}} %</p>
-              </a>
+          <div data-ng-show="HighscoreIndexViewModel.showRestHigh">
+            <div class="theRestHighscores">
+              <div data-ng-repeat="highscore in quiz.highscores | orderBy:'questionsRight' | limitTo:(quiz.highscores.length-5):5 | orderBy:'-questionsRight'">
+                <a id="{{highscore._id}}">
+                    <p data-ng-class="HighscoreIndexViewModel.selectedHighScore(highscore._id)">{{$index+5}} {{highscore.username}} - Score: {{((highscore.questionsRight / highscore.questionsTotal)*100).toFixed(2)}} %</p>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -28,7 +30,10 @@
         </div>
       </div>
       <div class="row">
-      <a data-ui-sref="quizIndex" id="download-button" class="btn-large waves-effect waves-light teal">BACK TO QUIZZES</a>
+        <a class="btn-large waves-effect waves-light teal" data-ng-click="HighscoreIndexViewModel.showAll()">TOGGLE HIGHSCORES</a>
+      </div>
+      <div class="row">
+        <a data-ui-sref="quizIndex" id="download-button" class="btn-large waves-effect waves-light teal">BACK TO QUIZZES</a>
       </div>
       <br><br>
     </div>

@@ -46,9 +46,6 @@
         self.highscore.$update({_id: $stateParams._id});
         self.quizApi.$update({_id: self.highscore.quizId}, function(){
           $state.go("highscoreIndex", {_id: self.highscore._id}, { reload: true });
-          // .then(function(){
-          //   $state.go("#"+self.highscore._id, {}, {});
-          // });
         });
 
 
