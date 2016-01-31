@@ -16,13 +16,21 @@
               </a>
             </div>
           </div>
+
           <div data-ng-show="HighscoreIndexViewModel.showRestHigh">
             <div class="theRestHighscores">
-              <div data-ng-repeat="highscore in quiz.highscores | orderBy:'questionsRight' | limitTo:(quiz.highscores.length-5):5 | orderBy:'-questionsRight'">
-                <a id="{{highscore._id}}">
-                    <p data-ng-class="HighscoreIndexViewModel.selectedHighScore(highscore._id)">{{$index+5}} {{highscore.username}} - Score: {{((highscore.questionsRight / highscore.questionsTotal)*100).toFixed(2)}} %</p>
-                </a>
+
+              <div data-ng-if="quiz.highscores.length > 5">
+
+                <div data-ng-repeat="highscore in quiz.highscores | orderBy:'questionsRight' | limitTo:(quiz.highscores.length-5):5 | orderBy:'-questionsRight'">
+
+                  <a id="{{highscore._id}}">
+                      <p data-ng-class="HighscoreIndexViewModel.selectedHighScore(highscore._id)">{{$index+5}} {{highscore.username}} - Score: {{((highscore.questionsRight / highscore.questionsTotal)*100).toFixed(2)}} %</p>
+                  </a>
+                </div>
+
               </div>
+
             </div>
           </div>
 
