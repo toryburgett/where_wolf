@@ -55,13 +55,15 @@
           var num2 = num + 1;
           self.highscore.questionsAnswered = num2;
           self.highscore.$update({_id: $stateParams._id});
-          self.selectAnswerNumber = 5;
-          self.submitShow = true;
 
           //show username field if questionsAnswered == questionsTotal
           if(self.highscore.questionsAnswered == self.highscore.questionsTotal){
             self.showUsername = true;
             self.submitShow = false;
+          }else{
+            self.selectAnswerNumber = 5;
+            self.submitShow = true;
+
           }
         }
 
@@ -123,28 +125,6 @@
 
 
     };
-
-    // this.optionAnswer = function(number){
-    //   var questionNumber = self.highscore.questionsAnswered;
-    //   if(self.selectAnswerNumber == number){
-    //     if(self.quiz.quiz[questionNumber].correctAnswer == number){
-    //       return "green";
-    //     }else{
-    //       return "red";
-    //     }
-    //   }
-    //   else{
-    //     if(self.quiz.quiz[questionNumber].correctAnswer == number){
-    //       return "green";
-    //     }else{
-    //       return "teal";
-    //     }
-    //   }
-    //
-    // };
-
-
-
 
   }
 }());
