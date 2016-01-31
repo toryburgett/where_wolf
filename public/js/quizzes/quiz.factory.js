@@ -13,8 +13,8 @@
     //   update: {method: "PUT"}
     // });
 
-    return $resource("http://where-wolf.herokuapp.com/quizzes/:_id", {}, {
-      update: {method: "PUT"}
-    });
+    // return $resource("http://where-wolf.herokuapp.com/quizzes/:_id", {}, {
+    //   update: {method: "PUT"}
+    // });
   }
 }());
