@@ -191,3 +191,8 @@ body {
   .aboutContent{
     margin: 0px 30px;
   }
+
+  .highestHighscores{
+    border-bottom: 1px solid grey;
+    margin: 0px 30px;  
+  }

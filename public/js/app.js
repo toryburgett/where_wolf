@@ -10,6 +10,7 @@
   ])
   .config([
     "$stateProvider",
+    "$anchorScrollProvider",
     RouterFunction
   ]);
 
@@ -56,7 +57,7 @@
       controllerAs: "QuizShowViewModel"
     })
     .state("highscoreIndex", {
-      url: "/highscore",
+      url: "/highscore/:_id",
       templateUrl: "js/quizzes/highscores/index.html",
       controller: "HighscoreIndexController",
       controllerAs: "HighscoreIndexViewModel"

@@ -29,7 +29,7 @@
 <div class="clearfix optionArea">
   <div class="row">
     <div data-ng-repeat="quizOptions in PlayViewModel.quiz.quiz[PlayViewModel.highscore.questionsAnswered].options">
-      <button class="waves-effect waves-light btn-large quizOptionButton hoverable" data-ng-class="PlayViewModel.selectedColor($index)" id="option{{$index}}" data-ng-click="PlayViewModel.selectAnswer($index)">
+      <button class="btn-large quizOptionButton hoverable" data-ng-class="PlayViewModel.selectedColor($index)" id="option{{$index}}" data-ng-click="PlayViewModel.selectAnswer($index)">
         {{quizOptions}}
       </button>
     </div>
@@ -40,7 +40,12 @@
   <div class="col s12">
     <div class="row userTools">
       <div class="selectAnswer deep-orange center-align" data-ng-show="PlayViewModel.showWarn">Please select an answer</div>
-      <button class="nextButton hoverable" data-ng-click="PlayViewModel.nextQuestion()">NEXT</button>
+      <div data-ng-show="PlayViewModel.submitShow">
+        <button class="nextButton hoverable" data-ng-click="PlayViewModel.submitAnswer()">SUBMIT</button>
+      </div>
+      <div data-ng-hide="PlayViewModel.submitShow">
+        <button class="nextButton hoverable" data-ng-click="PlayViewModel.nextQuestion()">NEXT</button>
+      </div>
     </div>
   </div>
 </div>
